@@ -1,0 +1,201 @@
+object FRMNOB_PERSONEL: TFRMNOB_PERSONEL
+  Left = 0
+  Top = 0
+  ClientHeight = 718
+  ClientWidth = 915
+  Caption = 'Birim Personelleri'
+  OldCreateOrder = False
+  OnClose = UniFormClose
+  MonitoredKeys.Keys = <>
+  OnCreate = UniFormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniPanel1: TUniPanel
+    Left = 0
+    Top = 0
+    Width = 915
+    Height = 49
+    Hint = ''
+    Align = alTop
+    TabOrder = 0
+    Caption = ''
+    ExplicitTop = -6
+    object RzBitBtn2: TUniBitBtn
+      Left = 40
+      Top = 18
+      Width = 75
+      Height = 25
+      Hint = ''
+      Caption = 'Sil'
+      TabOrder = 1
+      OnClick = RzBitBtn2Click
+    end
+    object RzBitBtn1: TUniBitBtn
+      Left = 152
+      Top = 18
+      Width = 75
+      Height = 25
+      Hint = ''
+      Caption = 'EKLE'
+      TabOrder = 2
+      OnClick = RzBitBtn1Click
+    end
+    object UniBitBtn3: TUniBitBtn
+      Left = 256
+      Top = 18
+      Width = 75
+      Height = 25
+      Hint = ''
+      Caption = 'Kaydet'
+      TabOrder = 3
+      OnClick = UniBitBtn3Click
+    end
+  end
+  object UniPanel2: TUniPanel
+    Left = 0
+    Top = 49
+    Width = 915
+    Height = 669
+    Hint = ''
+    Align = alClient
+    TabOrder = 1
+    Caption = ''
+    ExplicitTop = 41
+    object UniDBLookupComboBox1: TUniDBLookupComboBox
+      Left = 3
+      Top = 3
+      Width = 329
+      Hint = ''
+      ListField = 'ACIKLAMA'
+      ListSource = DSBIRIM
+      KeyField = 'BIRIM'
+      ListFieldIndex = 0
+      TabOrder = 1
+      Color = clWindow
+      Style = csDropDown
+      OnChange = UniDBLookupComboBox1Change
+      OnExit = UniDBLookupComboBox1Exit
+    end
+    object UniDBLookupComboBox2: TUniDBLookupComboBox
+      Left = 338
+      Top = 3
+      Width = 329
+      Hint = ''
+      ListField = 'ADI'
+      ListSource = DSPERSONEL
+      KeyField = 'TC'
+      ListFieldIndex = 0
+      TabOrder = 2
+      Color = clWindow
+      Style = csDropDown
+      OnKeyPress = UniDBLookupComboBox2KeyPress
+    end
+    object UniDBGrid1: TUniDBGrid
+      Left = 3
+      Top = 25
+      Width = 664
+      Height = 641
+      Hint = ''
+      DataSource = DSBIRIM_PERSONEL
+      LoadMask.Message = 'Veriler Y'#252'kleniyor'
+      ForceFit = True
+      TabOrder = 3
+      Columns = <
+        item
+          FieldName = 'BIRIMI'
+          Title.Caption = 'BIRIMI'
+          Width = 244
+        end
+        item
+          FieldName = 'PERSONEL'
+          Title.Caption = 'PERSONEL'
+          Width = 244
+        end>
+    end
+  end
+  object qbirim: TOraQuery
+    Session = data.AKGUN
+    SQL.Strings = (
+      'select * from NOBET_BIRIMLERI t WHERE T.Nobet_Sorumlusu=:sor')
+    Active = True
+    Top = 88
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'sor'
+        Value = Null
+      end>
+  end
+  object DSBIRIM: TDataSource
+    DataSet = qbirim
+    Left = 48
+    Top = 96
+  end
+  object QSQL: TOraSQL
+    Session = data.AKGUN
+    AfterExecute = QSQLAfterExecute
+    Left = 16
+    Top = 152
+  end
+  object qsor: TOraQuery
+    Session = data.AKGUN
+    Left = 32
+    Top = 224
+  end
+  object QBIRIM_PERSONEL: TOraQuery
+    Session = data.AKGUN
+    SQL.Strings = (
+      'select * from NOBET_BIRIM_PERSONEL t')
+    Left = 352
+    Top = 288
+    object QBIRIM_PERSONELBIRIM: TStringField
+      FieldName = 'BIRIM'
+      Size = 6
+    end
+    object QBIRIM_PERSONELPERSONEL_TC: TStringField
+      FieldName = 'PERSONEL_TC'
+      Size = 11
+    end
+    object QBIRIM_PERSONELPERSONEL: TStringField
+      FieldKind = fkLookup
+      FieldName = 'PERSONEL'
+      LookupDataSet = QPERSONEL
+      LookupKeyFields = 'TC'
+      LookupResultField = 'ADI'
+      KeyFields = 'PERSONEL_TC'
+      Size = 40
+      Lookup = True
+    end
+    object QBIRIM_PERSONELBIRIMI: TStringField
+      FieldKind = fkLookup
+      FieldName = 'BIRIMI'
+      LookupDataSet = qbirim
+      LookupKeyFields = 'BIRIM'
+      LookupResultField = 'ACIKLAMA'
+      KeyFields = 'BIRIM'
+      Size = 40
+      Lookup = True
+    end
+  end
+  object DSBIRIM_PERSONEL: TDataSource
+    DataSet = QBIRIM_PERSONEL
+    Left = 384
+    Top = 288
+  end
+  object QPERSONEL: TOraQuery
+    Session = data.AKGUN
+    SQL.Strings = (
+      'SELECT T.PERSONEL_ADI || '#39' '#39' || T.SOYADI AD'#305', T.TC_KIMLIK_NO TC'
+      '  FROM PER_PERSONEL T'
+      ' WHERE t.TC_KIMLIK_NO IS NOT NULL '
+      ' ORDER BY T.PERSONEL_ADI, T.SOYADI')
+    Active = True
+    Left = 448
+    Top = 40
+  end
+  object DSPERSONEL: TDataSource
+    DataSet = QPERSONEL
+    Left = 488
+    Top = 48
+  end
+end

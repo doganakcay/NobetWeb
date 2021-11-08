@@ -1,0 +1,32 @@
+unit Utumnobet;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm;
+
+type
+  TFRMTUMNOBET = class(TUniForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FRMTUMNOBET: TFRMTUMNOBET;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FRMTUMNOBET: TFRMTUMNOBET;
+begin
+  Result := TFRMTUMNOBET(UniMainModule.GetFormInstance(TFRMTUMNOBET));
+end;
+
+end.

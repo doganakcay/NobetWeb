@@ -1,0 +1,12 @@
+object UniMainModule: TUniMainModule
+  OldCreateOrder = False
+  OnCreate = UniGUIMainModuleCreate
+  BrowserOptions = [boDisableMouseRightClick, boDisableChromeRefresh]
+  MonitoredKeys.Keys = <>
+  ServerMessages.UnavailableErrMsg = #304'leti'#351'im hatas'#305
+  ServerMessages.LoadingMessage = 'Y'#252'kleniyor...'
+  ServerMessages.InvalidSessionMessage = 'Ge'#231'ersiz oturum veya oturum Zaman A'#351#305'm'#305'.'
+  ServerMessages.TerminateMessage = 'Web oturumu sonland'#305'r'#305'ld'#305'.'
+  Height = 150
+  Width = 215
+end

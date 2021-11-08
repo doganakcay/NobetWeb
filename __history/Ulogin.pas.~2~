@@ -1,0 +1,194 @@
+unit Ulogin;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIRegClasses, uniGUIForm, uniGUIBaseClasses, uniButton,
+  uniEdit, uniLabel, uniPanel;
+
+type
+  TUniLoginForm1 = class(TUniLoginForm)
+    UniButton1: TUniButton;
+    UniLabel1: TUniLabel;
+    UniButton2: TUniButton;
+    UniPanel1: TUniPanel;
+    tekadi: TUniEdit;
+    tesifre: TUniEdit;
+    UniLabel2: TUniLabel;
+    UniLabel3: TUniLabel;
+    procedure UniButton1Click(Sender: TObject);
+    procedure UniButton2Click(Sender: TObject);
+  private
+  sifre_deneme:integer;
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function UniLoginForm1: TUniLoginForm1;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  uniGUIVars, MainModule, uniGUIApplication,datalar,main;
+
+function UniLoginForm1: TUniLoginForm1;
+begin
+  Result := TUniLoginForm1(UniMainModule.GetFormInstance(TUniLoginForm1));
+end;
+
+procedure TUniLoginForm1.UniButton1Click(Sender: TObject);
+begin
+
+//FRMGIRIS.KUL:=datalar.data.AKGUN.Username;
+//frmGIRIS.SIF:=datalar.data.AKGUN.Password ;
+
+//doðum evi
+//
+
+//
+ //test
+//FRMGIRIS.KUL:='60058070332';
+//frmGIRIS.SIF:='1234';
+////
+FRMGIRIS.SRV:='10.42.112.3:1521:orcl';
+
+datalar.data.akgun.Username:='HBYS';
+datalar.data.AKGUN.Password:='nzz8637cPF00';
+datalar.data.AKGUN.Server:='10.42.112.3:1521:orcl';
+
+//AKGUN.Options.DateFormat:='DD-MON-RR'  ;
+//AKGUN.Options.DateLanguage:='AMERICAN';
+
+
+//FRMGIRIS.USR:=datalar.data.AKGUN.Username;
+//FRMGIRIS.PSW:=datalar.data.AKGUN.Password;
+
+
+ //numune
+
+//
+//// ////test
+////FRMGIRIS.KUL:='41332709896';  //taner ümütlü
+////frmGIRIS.SIF:='2000';
+////FRMGIRIS.KUL:='13091336668';// ibrahim kürkcü
+////frmGIRIS.SIF:='1234';
+//FRMGIRIS.KUL:='24788250488';// ECZANE kürkcü
+//frmGIRIS.SIF:='1234';
+
+/////
+//FRMGIRIS.SRV:='10.42.184.111:1521:ORCL';
+//datalar.data.akgun.Username:='HBYS';
+//datalar.data.AKGUN.Password:='26a46iPF4m';
+//datalar.data.AKGUN.Server:='10.42.184.111:1521:ORCL';
+////
+////datalar.data.AKGUN.Options.DateFormat:='DD-MON-RR'  ;
+////datalar.data.AKGUN.Options.DateLanguage:='AMERICAN';
+//
+//FRMGIRIS.USR:=datalar.data.AKGUN.Username;
+//FRMGIRIS.PSW:=datalar.data.AKGUN.Password;
+
+
+///EREGLI
+
+//
+// ////test
+////FRMGIRIS.KUL:='48817447700';
+////frmGIRIS.SIF:='7127731';
+//
+//FRMGIRIS.SRV:='10.42.192.196:1521:sby1';
+//
+//datalar.data.akgun.Username:='HBYS';
+//datalar.data.AKGUN.Password:='1q2w3e4r*';
+//datalar.data.AKGUN.Server:='10.42.192.196:1521:sby1';
+//
+//datalar.data.AKGUN.Options.DateFormat:='DD.MM.YYYY'  ;
+////datalar.data.AKGUN.Options.DateLanguage:='TURKISH';
+//
+//FRMGIRIS.USR:=datalar.data.AKGUN.Username;
+//FRMGIRIS.PSW:=datalar.data.AKGUN.Password;
+
+
+//BEYHEKÝM DH
+
+//
+// //test
+////FRMGIRIS.KUL:='60058070332';
+////frmGIRIS.SIF:='1234';
+////
+//FRMGIRIS.SRV:='10.42.208.101:1521:orcl';
+//
+//datalar.data.akgun.Username:='HBYS';
+//datalar.data.AKGUN.Password:='pf0c5aubrw';
+//datalar.data.AKGUN.Server:='10.42.208.101:1521:orcl';
+////
+////datalar.data.AKGUN.Options.DateFormat:='DD-MON-RR'  ;
+////datalar.data.AKGUN.Options.DateLanguage:='AMERICAN';
+////
+//
+//FRMGIRIS.USR:=datalar.data.AKGUN.Username;
+//FRMGIRIS.PSW:=datalar.data.AKGUN.Password;
+
+datalar.data.AKGUN.Open;
+
+
+sifre_deneme:=sifre_deneme+1;
+if (tekadi.Text='') or (tesifre.Text='') then
+begin
+  UniLabel1.Caption:='Þifre ve parolanýzý eksik girdiniz';
+  ShowMessage('Þifre ve parolanýzý eksik girdiniz');
+    if sifre_deneme=3 then
+     begin
+     datalar.data.AKGUN.Close;
+     ModalResult:=mrCancel;
+     end;
+  Exit;
+end;
+
+DATA.QUSER_KONTROL.Close;
+DATA.QUSER_KONTROL.Params[0].AsString:= tekadi.Text;
+data.QUSER_KONTROL.Params[1].AsString:=tesifre.Text;
+DATA.QUSER_KONTROL.Open;
+
+if DATA.QUSER_KONTROL.RecordCount=0 then
+begin
+  UniLabel1.Caption:='þifre veya parolayý yanlýþ girdiniz';
+  ShowMessage('þifre veya parolayý yanlýþ girdiniz');
+    if sifre_deneme=3 then
+     begin
+      datalar.data.AKGUN.Close;
+      ModalResult:=mrCancel;
+     end;
+  Exit;
+
+end;
+
+if DATA.QUSER_KONTROL.RecordCount>0 then
+begin
+FRMGIRIS.KUL:=tekadi.Text;
+frmGIRIS.SIF:=tesifre.Text;
+
+ModalResult:=mrOk;
+end;
+
+
+
+
+
+
+
+end;
+
+procedure TUniLoginForm1.UniButton2Click(Sender: TObject);
+begin
+ModalResult:=mrCancel;
+end;
+
+initialization
+  RegisterAppFormClass(TUniLoginForm1);
+
+end.

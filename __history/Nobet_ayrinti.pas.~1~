@@ -1,0 +1,99 @@
+unit Nobet_ayrinti;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm, uniButton, uniEdit, uniBasicGrid, uniDBGrid,
+  uniPanel, uniGUIBaseClasses, uniGroupBox, frxCross, frxClass, frxDBSet,
+  DBAccess, Ora, Data.DB, MemDS;
+
+type
+  TFRMNob_ayrinti = class(TUniForm)
+    QGRID: TOraQuery;
+    dsgrid: TDataSource;
+    qrapor: TOraQuery;
+    DataSource1: TDataSource;
+    qpersonel: TOraQuery;
+    dspersonel: TDataSource;
+    dstarih: TDataSource;
+    qtarih: TOraQuery;
+    QSORGU: TOraQuery;
+    OraSQL1: TOraSQL;
+    frxDBrapor: TfrxDBDataset;
+    frxReport1: TfrxReport;
+    frxCrossObject1: TfrxCrossObject;
+    GroupBox1: TUniGroupBox;
+    UniPanel1: TUniPanel;
+    GroupBox2: TUniGroupBox;
+    Panel2: TUniPanel;
+    Panel3: TUniPanel;
+    cxGrid1: TUniDBGrid;
+    Edit1: TUniEdit;
+    Button2: TUniButton;
+    Button1: TUniButton;
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FRMNob_ayrinti: TFRMNob_ayrinti;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication,datalar;
+
+function FRMNob_ayrinti: TFRMNob_ayrinti;
+begin
+  Result := TFRMNob_ayrinti(UniMainModule.GetFormInstance(TFRMNob_ayrinti));
+end;
+
+procedure TFRMNob_ayrinti.Button2Click(Sender: TObject);
+CONST
+INSERT:STRING='INSERT  INTO NOBET_AYRITI_KONUM(NOB_AYRINTI_ID,TARIH,BIRIM,TC,KONUM1)VALUES (NOBET_AYRINTI_KONUM_SQ.NEXTVAL,:TARIH,:BIRIM,:TC,:KONUM1)';
+SORGU:string='SELECT COUNT(*) TOPLAM FROM  NOBET_AYRITI_KONUM T WHERE T.TARIH=:TARIH AND T.BIRIM=:BIRIM AND T.TC=:TC AND T.KONUM1=:KONUM1' ;
+Delete:string='DELETE  NOBET_AYRITI_KONUM T WHERE T.TARIH=:TARIH AND T.BIRIM=:BIRIM AND T.TC=:TC AND T.KONUM1=:KONUM1' ;
+
+begin
+
+if (AKTIF_GUN='') OR (AKTIF_KISI='') or (Edit1.Text='') then EXIT;
+         QSORGU.SQL.Clear;
+         QSORGU.SQL.Add(sorgu);
+         QSORGU.ParamByName('TARIH').AsString:=Copy(AKTIF_GUN,7,2)+'.'+Copy(AKTIF_GUN,5,2)+'.'+Copy(AKTIF_GUN,1,4);
+         QSORGU.ParamByName('TC').AsString:=AKTIF_KISI;
+         QSORGU.ParamByName('BIRIM').AsString:=BIRIM;
+         QSORGU.ParamByName('KONUM1').AsString:=Edit1.Text;
+         QSORGU.Open;
+         if QSORGU.FieldByName('TOPLAM').AsInteger=0 then
+         BEGIN
+             OraSQL1.SQL.Clear;
+             OraSQL1.SQL.Add(insert);
+             OraSQL1.ParamByName('TARIH').AsString:=Copy(AKTIF_GUN,7,2)+'.'+Copy(AKTIF_GUN,5,2)+'.'+Copy(AKTIF_GUN,1,4);
+             OraSQL1.ParamByName('TC').AsString:=AKTIF_KISI;
+             OraSQL1.ParamByName('BIRIM').AsString:=BIRIM;
+             OraSQL1.ParamByName('KONUM1').AsString:=Edit1.Text;
+             OraSQL1.Execute;
+             DATA.AKGUN.Commit;
+         end else
+         BEGIN
+             OraSQL1.SQL.Clear;
+             OraSQL1.SQL.Add(DELETE);
+             OraSQL1.ParamByName('TARIH').AsString:=Copy(AKTIF_GUN,7,2)+'.'+Copy(AKTIF_GUN,5,2)+'.'+Copy(AKTIF_GUN,1,4);
+             OraSQL1.ParamByName('TC').AsString:=AKTIF_KISI;
+             OraSQL1.ParamByName('BIRIM').AsString:=BIRIM;
+             OraSQL1.ParamByName('KONUM1').AsString:=Edit1.Text;
+             OraSQL1.Execute;
+             DATA.AKGUN.Commit;
+
+         END;
+  QGRID.Refresh;
+
+end;
+
+end.

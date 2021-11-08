@@ -1,0 +1,2101 @@
+object FRM_NOBET_BIRIMI: TFRM_NOBET_BIRIMI
+  Left = 0
+  Top = 0
+  ClientHeight = 692
+  ClientWidth = 1269
+  Caption = 'N'#246'bet Birimleri'
+  WindowState = wsMaximized
+  OldCreateOrder = False
+  OnClose = UniFormClose
+  MonitoredKeys.Keys = <>
+  OnCreate = UniFormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniPageControl1: TUniPageControl
+    Left = 0
+    Top = 0
+    Width = 1269
+    Height = 692
+    Hint = ''
+    ActivePage = UniTabSheet2
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 48
+    ExplicitTop = 216
+    ExplicitWidth = 289
+    ExplicitHeight = 193
+    object UniTabSheet1: TUniTabSheet
+      Hint = ''
+      Caption = 'N'#246'bet Birimleri'
+      object UniDBGrid1: TUniDBGrid
+        Left = 0
+        Top = 0
+        Width = 1261
+        Height = 552
+        Hint = ''
+        RowEditor = True
+        DataSource = DSBIRIM
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgConfirmDelete, dgFilterClearButton, dgTabs]
+        WebOptions.Paged = False
+        LoadMask.Message = 'Veriler Y'#252'kleniyor...'
+        ForceFit = True
+        Align = alClient
+        TabOrder = 0
+        OnColumnSort = UniDBGrid1ColumnSort
+        OnClearFilters = UniDBGrid1ClearFilters
+        OnColumnFilter = UniDBGrid1ColumnFilter
+        Columns = <
+          item
+            FieldName = 'RISKLI'
+            Filtering.Enabled = True
+            Filtering.Editor = C_RISKLI
+            Title.Caption = 'Riskli'
+            Width = 27
+            Alignment = taLeftJustify
+            CheckBoxField.BooleanFieldOnly = False
+            CheckBoxField.FieldValues = 'X;'
+            CheckBoxField.DisplayValues = ' ; '
+          end
+          item
+            FieldName = 'BIRIM'
+            Filtering.Enabled = True
+            Filtering.Editor = EDBIRIM_ID
+            Title.Caption = 'Servis No'
+            Width = 90
+            ReadOnly = True
+          end
+          item
+            FieldName = 'ACIKLAMA'
+            Filtering.Enabled = True
+            Filtering.Editor = LOO_BIRIM
+            Title.Caption = 'Servis Ad'#305
+            Width = 200
+            ReadOnly = True
+          end
+          item
+            FieldName = 'LNOBET_SORUMLUSU'
+            Filtering.Enabled = True
+            Filtering.Editor = LOOPKISI
+            Title.Caption = 'N'#246'bet Haz'#305'rlayacak Personel'
+            Width = 170
+          end
+          item
+            FieldName = 'AKTIF'
+            Filtering.Enabled = True
+            Filtering.Editor = CAKTIF
+            Title.Caption = 'Aktif'
+            Width = 26
+            Alignment = taLeftJustify
+            CheckBoxField.BooleanFieldOnly = False
+            CheckBoxField.FieldValues = 'X;'
+            CheckBoxField.DisplayValues = ' ; '
+          end
+          item
+            FieldName = 'LBIRIM_TIPI'
+            Filtering.Enabled = True
+            Filtering.Editor = LOOPBIRIMTIPI
+            Title.Caption = 'Birim Tipi'
+            Width = 124
+          end
+          item
+            FieldName = 'ICAP'
+            Filtering.Enabled = True
+            Filtering.Editor = CICAP
+            Title.Caption = #304'cap'
+            Width = 25
+            Alignment = taLeftJustify
+            CheckBoxField.BooleanFieldOnly = False
+            CheckBoxField.FieldValues = 'I;N;'
+            CheckBoxField.DisplayValues = ' ; '
+          end>
+      end
+      object UniHiddenPanel1: TUniHiddenPanel
+        Left = 824
+        Top = 42
+        Width = 175
+        Height = 215
+        Hint = ''
+        Visible = True
+        object C_RISKLI: TUniCheckBox
+          Left = 16
+          Top = 16
+          Width = 97
+          Height = 17
+          Hint = ''
+          Caption = ''
+          TabOrder = 1
+        end
+        object EDBIRIM_ID: TUniEdit
+          Left = 16
+          Top = 39
+          Width = 121
+          Hint = ''
+          Text = 'EDBIRIM_ID'
+          TabOrder = 2
+        end
+        object LOO_BIRIM: TUniDBLookupComboBox
+          Left = 16
+          Top = 67
+          Width = 145
+          Hint = ''
+          ListField = 'ACIKLAMA'
+          ListSource = DSBIRIM
+          KeyField = 'ACIKLAMA'
+          ListFieldIndex = 0
+          TabOrder = 3
+          Color = clWindow
+          Style = csDropDown
+        end
+        object CAKTIF: TUniCheckBox
+          Left = 16
+          Top = 123
+          Width = 97
+          Height = 17
+          Hint = ''
+          Caption = ''
+          TabOrder = 4
+        end
+        object LOOPKISI: TUniDBLookupComboBox
+          Left = 16
+          Top = 95
+          Width = 145
+          Hint = ''
+          ListField = 'ADI'
+          ListSource = DSLPERSONEL
+          KeyField = 'ADI'
+          ListFieldIndex = 0
+          TabOrder = 5
+          Color = clWindow
+          Style = csDropDown
+        end
+        object LOOPBIRIMTIPI: TUniDBLookupComboBox
+          Left = 16
+          Top = 146
+          Width = 145
+          Hint = ''
+          ListField = 'ACIKLAMA'
+          ListSource = DS_NOBET_TIPI
+          KeyField = 'ACIKLAMA'
+          ListFieldIndex = 0
+          TabOrder = 6
+          Color = clWindow
+          Style = csDropDown
+        end
+        object CICAP: TUniCheckBox
+          Left = 16
+          Top = 174
+          Width = 97
+          Height = 17
+          Hint = ''
+          Caption = ''
+          TabOrder = 7
+        end
+      end
+      object UniPanel1: TUniPanel
+        Left = 0
+        Top = 552
+        Width = 1261
+        Height = 112
+        Hint = ''
+        Align = alBottom
+        TabOrder = 2
+        Caption = ''
+        ExplicitTop = 558
+        object cxCheckBox1: TUniCheckBox
+          Left = 11
+          Top = 40
+          Width = 25
+          Height = 17
+          Hint = ''
+          Caption = ''
+          TabOrder = 1
+        end
+        object TACIKLAMA: TUniEdit
+          Left = 56
+          Top = 37
+          Width = 263
+          Hint = ''
+          Text = ''
+          TabOrder = 2
+        end
+        object TPERSONEL: TUniDBLookupComboBox
+          Left = 353
+          Top = 37
+          Width = 224
+          Hint = ''
+          ListField = 'ADI'
+          ListSource = DSLPERSONEL
+          KeyField = 'USER_ID'
+          ListFieldIndex = 0
+          TabOrder = 3
+          Color = clWindow
+          Style = csDropDown
+        end
+        object chaktif: TUniCheckBox
+          Left = 594
+          Top = 40
+          Width = 25
+          Height = 17
+          Hint = ''
+          Caption = ''
+          TabOrder = 4
+        end
+        object UniDBLookupComboBox2: TUniDBLookupComboBox
+          Left = 711
+          Top = 37
+          Width = 187
+          Hint = ''
+          ListField = 'ACIKLAMA'
+          ListSource = DS_NOBET_TIPI
+          KeyField = 'SIRA_NO'
+          ListFieldIndex = 0
+          TabOrder = 5
+          Color = clWindow
+          Style = csDropDown
+        end
+        object chicap: TUniCheckBox
+          Left = 923
+          Top = 40
+          Width = 25
+          Height = 17
+          Hint = ''
+          Caption = ''
+          TabOrder = 6
+        end
+        object UniBitBtn1: TUniBitBtn
+          Left = 346
+          Top = 65
+          Width = 75
+          Height = 25
+          Hint = ''
+          Caption = 'Ekle'
+          TabOrder = 7
+          Images = UniNativeImageList1
+          ImageIndex = 4
+          OnClick = UniBitBtn1Click
+        end
+        object RzBitBtn2: TUniBitBtn
+          Left = 515
+          Top = 65
+          Width = 75
+          Height = 25
+          Hint = ''
+          Caption = 'Kaydet'
+          TabOrder = 8
+          Images = UniNativeImageList1
+          ImageIndex = 4
+          OnClick = RzBitBtn2Click
+        end
+        object UniLabel1: TUniLabel
+          Left = 7
+          Top = 16
+          Width = 23
+          Height = 13
+          Hint = ''
+          Caption = 'Riskli'
+          TabOrder = 9
+        end
+        object UniLabel2: TUniLabel
+          Left = 184
+          Top = 18
+          Width = 47
+          Height = 13
+          Hint = ''
+          Caption = 'Servis Ad'#305
+          TabOrder = 10
+        end
+        object UniLabel3: TUniLabel
+          Left = 408
+          Top = 18
+          Width = 82
+          Height = 13
+          Hint = ''
+          Caption = 'Sorumlu Personel'
+          TabOrder = 11
+        end
+        object UniLabel4: TUniLabel
+          Left = 577
+          Top = 18
+          Width = 22
+          Height = 13
+          Hint = ''
+          Caption = 'Aktif'
+          TabOrder = 12
+        end
+        object UniLabel6: TUniLabel
+          Left = 776
+          Top = 18
+          Width = 48
+          Height = 13
+          Hint = ''
+          Caption = 'N'#246'bet Tipi'
+          TabOrder = 13
+        end
+        object UniLabel7: TUniLabel
+          Left = 912
+          Top = 21
+          Width = 21
+          Height = 13
+          Hint = ''
+          Caption = #304'cap'
+          TabOrder = 14
+        end
+        object UniBitBtn2: TUniBitBtn
+          Left = 434
+          Top = 65
+          Width = 75
+          Height = 25
+          Hint = ''
+          Caption = 'D'#252'zenle'
+          TabOrder = 15
+          Images = UniNativeImageList1
+          ImageIndex = 3
+          OnClick = UniBitBtn2Click
+        end
+      end
+    end
+    object UniTabSheet2: TUniTabSheet
+      Hint = ''
+      Caption = 'N'#246'bet Yetkileri'
+      object UniPanel2: TUniPanel
+        Left = 912
+        Top = 0
+        Width = 349
+        Height = 664
+        Hint = ''
+        Align = alRight
+        TabOrder = 0
+        Caption = 'UniPanel2'
+        ExplicitLeft = 917
+        object UniPanel5: TUniPanel
+          Left = 1
+          Top = 1
+          Width = 347
+          Height = 51
+          Hint = ''
+          Align = alTop
+          TabOrder = 1
+          Caption = ''
+          object CXLOOP_BIRIM: TUniDBLookupComboBox
+            Left = 16
+            Top = 26
+            Width = 249
+            Hint = ''
+            ListField = 'ACIKLAMA'
+            ListSource = DSBIRIM
+            KeyField = 'BIRIM'
+            ListFieldIndex = 0
+            TabOrder = 1
+            Color = clWindow
+            OnKeyPress = CXLOOP_BIRIMKeyPress
+          end
+          object bntsorumlu: TUniBitBtn
+            Left = 269
+            Top = 23
+            Width = 75
+            Height = 25
+            Hint = ''
+            Caption = 'Ekle'
+            TabOrder = 2
+            Images = UniNativeImageList1
+            ImageIndex = 1
+            OnClick = bntsorumluClick
+          end
+          object UniLabel5: TUniLabel
+            Left = 24
+            Top = 7
+            Width = 91
+            Height = 13
+            Hint = ''
+            Caption = 'N'#246'bet Birimi Se'#231'iniz'
+            TabOrder = 3
+          end
+        end
+        object UniDBGrid3: TUniDBGrid
+          Left = 1
+          Top = 52
+          Width = 347
+          Height = 611
+          Hint = ''
+          HeaderTitle = 'Yetkili Birimler'
+          HeaderTitleAlign = taCenter
+          DataSource = dssorumlu_birimler
+          WebOptions.Paged = False
+          LoadMask.Message = 'Veriler Y'#252'kleniyor....'
+          Images = UniNativeImageList1
+          ForceFit = True
+          Align = alClient
+          TabOrder = 2
+          OnColumnActionClick = UniDBGrid3ColumnActionClick
+          Columns = <
+            item
+              FieldName = 'loopbirim'
+              Title.Caption = 'Yetkili Birim'
+              Width = 184
+            end
+            item
+              ActionColumn.Enabled = True
+              ActionColumn.Buttons = <
+                item
+                  ButtonId = 0
+                  Hint = 'Sil'
+                  ImageIndex = 0
+                end>
+              Title.Caption = 'Sil'
+              Width = 64
+              Alignment = taCenter
+            end>
+        end
+      end
+      object UniPanel3: TUniPanel
+        Left = 0
+        Top = 0
+        Width = 912
+        Height = 664
+        Hint = ''
+        Align = alClient
+        TabOrder = 1
+        Caption = ''
+        object UniDBGrid2: TUniDBGrid
+          Left = 1
+          Top = 52
+          Width = 910
+          Height = 611
+          Hint = ''
+          ClientEvents.ExtEvents.Strings = (
+            
+              'afterrender=function afterrender(sender, eOpts)'#13#10'{'#13#10#13#10' var me=se' +
+              'nder;'#13#10'    if (me.editingPlugin.isRowEditor) {'#13#10'        me.editi' +
+              'ngPlugin.editorCfg.cls = "_roweditor";'#13#10'        me.addCls('#39'_rowe' +
+              'ditor'#39');'#13#10'    };'#13#10#13#10'}'#13#10'  ')
+          HeaderTitle = 'Kullan'#305'c'#305' Tan'#305'mlama'
+          HeaderTitleAlign = taCenter
+          DataSource = DSLOCAL_PERSONEL
+          Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgConfirmDelete, dgFilterClearButton, dgAutoRefreshRow]
+          WebOptions.Paged = False
+          LoadMask.Message = 'Veriler Y'#252'kleniyor....'
+          HiddenPanel = UniHiddenPanel2
+          ForceFit = True
+          Align = alClient
+          TabOrder = 1
+          OnColumnSort = UniDBGrid2ColumnSort
+          OnClearFilters = UniDBGrid2ClearFilters
+          OnColumnFilter = UniDBGrid2ColumnFilter
+          Columns = <
+            item
+              FieldName = 'KULLANICI'
+              Filtering.Enabled = True
+              Filtering.Editor = hidenloopkullanici
+              Title.Caption = 'Kullan'#305'c'#305
+              Width = 304
+              Alignment = taCenter
+              Sortable = True
+            end
+            item
+              FieldName = 'PASS'
+              Filtering.Enabled = True
+              Filtering.Editor = hideneditpass
+              Title.Caption = #350'ifre'
+              Width = 64
+              Alignment = taCenter
+              Sortable = True
+            end
+            item
+              FieldName = 'TC'
+              Filtering.Enabled = True
+              Filtering.Editor = hidenedittc
+              Title.Caption = 'TC'
+              Width = 70
+              Alignment = taCenter
+              Sortable = True
+            end
+            item
+              FieldName = 'NOBET'
+              Filtering.Enabled = True
+              Filtering.Editor = hidenchecknobet
+              Title.Caption = 'N'#246'bet'
+              Width = 37
+              Alignment = taCenter
+              Editor = UniComboBox1
+              Sortable = True
+              CheckBoxField.BooleanFieldOnly = False
+              CheckBoxField.FieldValues = 'X;'
+              CheckBoxField.DisplayValues = ';'
+            end
+            item
+              FieldName = 'NOB_KONTROL'
+              Filtering.Enabled = True
+              Filtering.Editor = hidenchecknob_kontrol
+              Title.Caption = 'N'#246'bet Kont.'
+              Width = 78
+              Alignment = taCenter
+              Sortable = True
+              CheckBoxField.BooleanFieldOnly = False
+              CheckBoxField.FieldValues = 'X;'
+              CheckBoxField.DisplayValues = ';'
+            end
+            item
+              FieldName = 'MAAS_KONTROL'
+              Filtering.Enabled = True
+              Filtering.Editor = HidenCheckMaasKont
+              Title.Caption = 'Maas Kont.'
+              Width = 85
+              Alignment = taCenter
+              Sortable = True
+              CheckBoxField.BooleanFieldOnly = False
+              CheckBoxField.FieldValues = 'X;'
+              CheckBoxField.DisplayValues = ';'
+            end
+            item
+              FieldName = 'SYSTEM'
+              Filtering.Enabled = True
+              Filtering.Editor = HidenCheckSystem
+              Title.Caption = 'System'
+              Width = 42
+              Alignment = taCenter
+              Sortable = True
+              CheckBoxField.BooleanFieldOnly = False
+              CheckBoxField.FieldValues = 'X;'
+              CheckBoxField.DisplayValues = ';'
+            end
+            item
+              FieldName = 'BIRIM_TIPI'
+              Filtering.Enabled = True
+              Filtering.Editor = hidenLoopBirimTipi
+              Title.Caption = 'Birim Tipi'
+              Width = 304
+              Alignment = taCenter
+              Sortable = True
+            end>
+        end
+        object UniPanel4: TUniPanel
+          Left = 1
+          Top = 1
+          Width = 910
+          Height = 51
+          Hint = ''
+          Align = alTop
+          TabOrder = 2
+          Caption = ''
+          object UniButton1: TUniButton
+            Left = 10
+            Top = 20
+            Width = 75
+            Height = 25
+            Hint = ''
+            Caption = 'Kay'#305't Ekle'
+            TabOrder = 1
+            Images = UniNativeImageList1
+            ImageIndex = 4
+            OnClick = UniButton1Click
+          end
+          object UniButton2: TUniButton
+            Left = 175
+            Top = 20
+            Width = 75
+            Height = 25
+            Hint = ''
+            Caption = 'Kadet'
+            TabOrder = 2
+            Images = UniNativeImageList1
+            ImageIndex = 5
+            OnClick = UniButton2Click
+          end
+          object UniButton3: TUniButton
+            Left = 94
+            Top = 20
+            Width = 75
+            Height = 25
+            Hint = ''
+            Caption = 'D'#252'zenle'
+            TabOrder = 3
+            Images = UniNativeImageList1
+            ImageIndex = 3
+            OnClick = UniButton3Click
+          end
+        end
+        object UniHiddenPanel2: TUniHiddenPanel
+          Left = 573
+          Top = 77
+          Width = 245
+          Height = 290
+          Hint = ''
+          Visible = True
+          object hidenloopkullanici: TUniDBLookupComboBox
+            Left = 14
+            Top = 15
+            Width = 190
+            Hint = ''
+            ListField = 'ADI'
+            ListSource = DSLPERSONEL
+            KeyField = 'ADI'
+            ListFieldIndex = 0
+            TabOrder = 1
+            Color = clWindow
+            Style = csDropDown
+          end
+          object hideneditpass: TUniEdit
+            Left = 14
+            Top = 43
+            Width = 121
+            Hint = ''
+            Text = ''
+            TabOrder = 2
+          end
+          object hidenedittc: TUniEdit
+            Left = 14
+            Top = 72
+            Width = 121
+            Hint = ''
+            Text = ''
+            TabOrder = 3
+          end
+          object hidenchecknobet: TUniCheckBox
+            Left = 14
+            Top = 104
+            Width = 97
+            Height = 17
+            Hint = ''
+            Caption = ''
+            TabOrder = 4
+          end
+          object hidenchecknob_kontrol: TUniCheckBox
+            Left = 14
+            Top = 127
+            Width = 97
+            Height = 17
+            Hint = ''
+            Caption = ''
+            TabOrder = 5
+          end
+          object HidenCheckMaasKont: TUniCheckBox
+            Left = 14
+            Top = 153
+            Width = 97
+            Height = 17
+            Hint = ''
+            Caption = ''
+            TabOrder = 6
+          end
+          object HidenCheckSystem: TUniCheckBox
+            Left = 14
+            Top = 176
+            Width = 97
+            Height = 17
+            Hint = ''
+            Caption = ''
+            TabOrder = 7
+          end
+          object hidenLoopBirimTipi: TUniDBLookupComboBox
+            Left = 14
+            Top = 199
+            Width = 145
+            Hint = ''
+            ListField = 'ACIKLAMA'
+            ListSource = dsnobet_tipleri
+            KeyField = 'ACIKLAMA'
+            ListFieldIndex = 0
+            TabOrder = 8
+            Color = clWindow
+            Style = csDropDown
+          end
+          object UniComboBox1: TUniComboBox
+            Left = 16
+            Top = 227
+            Width = 145
+            Hint = ''
+            Text = 'UniComboBox1'
+            Items.Strings = (
+              ''
+              'X')
+            TabOrder = 9
+            IconItems = <>
+          end
+        end
+      end
+    end
+    object UniTabSheet3: TUniTabSheet
+      Hint = ''
+      Caption = 'N'#246'bet saatleri'
+      object UniPanel6: TUniPanel
+        Left = 0
+        Top = 0
+        Width = 1261
+        Height = 71
+        Hint = ''
+        Align = alTop
+        TabOrder = 0
+        Caption = ''
+        object cxButton9: TUniButton
+          Left = 18
+          Top = 28
+          Width = 75
+          Height = 25
+          Hint = ''
+          Caption = 'Kay'#305't Ekle'
+          TabOrder = 1
+          Images = UniNativeImageList1
+          ImageIndex = 4
+          OnClick = cxButton9Click
+        end
+        object cxButton8: TUniButton
+          Left = 102
+          Top = 28
+          Width = 75
+          Height = 25
+          Hint = ''
+          Caption = 'D'#252'zenle'
+          TabOrder = 2
+          Images = UniNativeImageList1
+          ImageIndex = 3
+          OnClick = cxButton8Click
+        end
+        object cxButton7: TUniButton
+          Left = 183
+          Top = 28
+          Width = 75
+          Height = 25
+          Hint = ''
+          Caption = 'Kadet'
+          TabOrder = 3
+          Images = UniNativeImageList1
+          ImageIndex = 5
+          OnClick = cxButton7Click
+        end
+      end
+      object UniDBGrid4: TUniDBGrid
+        Left = 0
+        Top = 71
+        Width = 1261
+        Height = 593
+        Hint = ''
+        DataSource = dsNobet_Saatleri
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgConfirmDelete, dgFilterClearButton, dgAutoRefreshRow]
+        WebOptions.Paged = False
+        LoadMask.Message = 'Veriler Y'#252'kleniyor...'
+        HiddenPanel = UniHiddenPanel3
+        ForceFit = True
+        Align = alClient
+        TabOrder = 1
+        OnClearFilters = UniDBGrid4ClearFilters
+        OnColumnFilter = UniDBGrid4ColumnFilter
+        Columns = <
+          item
+            FieldName = 'SAAT_ARALIK'
+            Filtering.Enabled = True
+            Filtering.Editor = looaciklamaara
+            Title.Caption = 'SAAT_ARALIK'
+            Width = 76
+            Sortable = True
+          end
+          item
+            FieldName = 'SAAT'
+            Filtering.Enabled = True
+            Filtering.Editor = saat_ara
+            Title.Caption = 'SAAT'
+            Width = 64
+            Sortable = True
+          end
+          item
+            FieldName = 'MESAI_BAS_ZAM'
+            Filtering.Enabled = True
+            Filtering.Editor = nbaslamaara
+            Title.Caption = 'MESAI_BAS_ZAM'
+            Width = 87
+            Sortable = True
+          end
+          item
+            FieldName = 'MESAI_BIT_ZAM'
+            Filtering.Enabled = True
+            Filtering.Editor = nbitara
+            Title.Caption = 'MESAI_BIT_ZAM'
+            Width = 84
+            Sortable = True
+          end
+          item
+            FieldName = 'NOB_SAY'
+            Filtering.Enabled = True
+            Filtering.Editor = UniCheckBox1
+            Title.Caption = 'NOB_SAY'
+            Width = 50
+            Alignment = taLeftJustify
+            Sortable = True
+            CheckBoxField.BooleanFieldOnly = False
+            CheckBoxField.FieldValues = 'X;'
+            CheckBoxField.DisplayValues = ';'
+          end
+          item
+            FieldName = 'MES_SAY'
+            Filtering.Enabled = True
+            Filtering.Editor = UniCheckBox2
+            Title.Caption = 'MES_SAY'
+            Width = 49
+            Alignment = taLeftJustify
+            Sortable = True
+            CheckBoxField.BooleanFieldOnly = False
+            CheckBoxField.FieldValues = 'X;'
+            CheckBoxField.DisplayValues = ';'
+          end
+          item
+            FieldName = 'SABAH'
+            Filtering.Enabled = True
+            Filtering.Editor = UniCheckBox3
+            Title.Caption = 'SABAH'
+            Width = 37
+            Alignment = taLeftJustify
+            Sortable = True
+            CheckBoxField.BooleanFieldOnly = False
+            CheckBoxField.FieldValues = '1;'
+            CheckBoxField.DisplayValues = ';'
+          end
+          item
+            FieldName = 'OGLE'
+            Filtering.Enabled = True
+            Filtering.Editor = UniCheckBox4
+            Title.Caption = 'OGLE'
+            Width = 30
+            Alignment = taLeftJustify
+            Sortable = True
+            CheckBoxField.BooleanFieldOnly = False
+            CheckBoxField.FieldValues = '1;'
+            CheckBoxField.DisplayValues = ';'
+          end
+          item
+            FieldName = 'AKSAM'
+            Filtering.Enabled = True
+            Filtering.Editor = UniCheckBox5
+            Title.Caption = 'AKSAM'
+            Width = 38
+            Alignment = taLeftJustify
+            Sortable = True
+            CheckBoxField.BooleanFieldOnly = False
+            CheckBoxField.FieldValues = '1;'
+            CheckBoxField.DisplayValues = ';'
+          end
+          item
+            FieldName = 'loppvardia'
+            Filtering.Enabled = True
+            Filtering.Editor = vardiakoduara
+            Title.Caption = 'loppvardia'
+            Width = 124
+            Sortable = True
+          end
+          item
+            FieldName = 'SIRALAMA_NO'
+            Filtering.Enabled = True
+            Filtering.Editor = siralamara
+            Title.Caption = 'SIRALAMA_NO'
+            Width = 76
+            Sortable = True
+          end
+          item
+            FieldName = 'loop_nobet_tipi'
+            Filtering.Enabled = True
+            Filtering.Editor = nobettipiara
+            Title.Caption = 'loop_nobet_tipi'
+            Width = 124
+            Sortable = True
+          end>
+      end
+      object UniHiddenPanel3: TUniHiddenPanel
+        Left = 722
+        Top = 149
+        Width = 215
+        Height = 460
+        Hint = ''
+        Visible = True
+        object looaciklamaara: TUniDBLookupComboBox
+          Left = 16
+          Top = 16
+          Width = 145
+          Hint = ''
+          ListField = 'SAAT_ARALIK'
+          ListSource = dsNobet_Saatleri
+          KeyField = 'SAAT_ARALIK'
+          ListFieldIndex = 0
+          TabOrder = 1
+          Color = clWindow
+          Style = csDropDown
+        end
+        object saat_ara: TUniEdit
+          Left = 16
+          Top = 48
+          Width = 121
+          Hint = ''
+          Text = 'saat_ara'
+          TabOrder = 2
+        end
+        object vardiakoduara: TUniDBLookupComboBox
+          Left = 16
+          Top = 132
+          Width = 145
+          Hint = ''
+          ListField = 'ACIKLAMA'
+          ListSource = DSVARDIYALAR
+          KeyField = 'ACIKLAMA'
+          ListFieldIndex = 0
+          TabOrder = 3
+          Color = clWindow
+          Style = csDropDown
+        end
+        object siralamara: TUniEdit
+          Left = 16
+          Top = 160
+          Width = 121
+          Hint = ''
+          Text = 'siralamara'
+          TabOrder = 4
+        end
+        object nobettipiara: TUniDBLookupComboBox
+          Left = 16
+          Top = 184
+          Width = 145
+          Hint = ''
+          ListField = 'ACIKLAMA'
+          ListSource = dsnobet_tipleri
+          KeyField = 'ACIKLAMA'
+          ListFieldIndex = 0
+          TabOrder = 5
+          Color = clWindow
+          Style = csDropDown
+        end
+        object UniCheckBox1: TUniCheckBox
+          Left = 14
+          Top = 224
+          Width = 97
+          Height = 17
+          Hint = ''
+          Caption = ''
+          TabOrder = 6
+        end
+        object UniCheckBox2: TUniCheckBox
+          Left = 14
+          Top = 247
+          Width = 97
+          Height = 17
+          Hint = ''
+          Caption = ''
+          TabOrder = 7
+        end
+        object UniCheckBox3: TUniCheckBox
+          Left = 14
+          Top = 273
+          Width = 97
+          Height = 17
+          Hint = ''
+          Caption = ''
+          TabOrder = 8
+        end
+        object UniCheckBox4: TUniCheckBox
+          Left = 14
+          Top = 296
+          Width = 97
+          Height = 17
+          Hint = ''
+          Caption = ''
+          TabOrder = 9
+        end
+        object UniCheckBox5: TUniCheckBox
+          Left = 14
+          Top = 328
+          Width = 97
+          Height = 17
+          Hint = ''
+          Caption = ''
+          TabOrder = 10
+        end
+        object nbaslamaara: TUniEdit
+          Left = 16
+          Top = 76
+          Width = 121
+          Hint = ''
+          Text = ''
+          TabOrder = 11
+          InputMask.Mask = '99:99:99'
+          InputMask.RemoveMaskChar = False
+        end
+        object nbitara: TUniEdit
+          Left = 16
+          Top = 104
+          Width = 121
+          Hint = ''
+          Text = ''
+          TabOrder = 12
+          InputMask.Mask = '99:99:99'
+          InputMask.RemoveMaskChar = False
+        end
+      end
+    end
+    object UniTabSheet4: TUniTabSheet
+      Hint = ''
+      Caption = 'Nobet Birim Tan'#305'llar'#305
+    end
+  end
+  object dsnobet_tipleri: TOraDataSource
+    DataSet = qnobet_tipleri
+    Left = 888
+    Top = 96
+  end
+  object dssorumlu_birimler: TOraDataSource
+    DataSet = qsomlu_birimler
+    Left = 864
+  end
+  object QLOCAL_PERSONEL: TOraQuery
+    SQLInsert.Strings = (
+      'INSERT INTO LOCAL_USER'
+      
+        '  (USER_ID, PASS, TC, NOBET, NOB_KONTROL, MAAS_KONTROL, SYSTEM, ' +
+        'NOB_TIPI)'
+      'VALUES'
+      
+        '  (:USER_ID, :PASS, :USER_ID, :NOBET, :NOB_KONTROL, :MAAS_KONTRO' +
+        'L, :SYSTEM, :NOB_TIPI)')
+    SQLDelete.Strings = (
+      'DELETE FROM LOCAL_USER'
+      'WHERE'
+      '  USER_ID = :Old_USER_ID')
+    SQLUpdate.Strings = (
+      'UPDATE LOCAL_USER'
+      'SET'
+      
+        '  USER_ID = :USER_ID, PASS = :PASS, TC = :TC, NOBET = :NOBET, NO' +
+        'B_KONTROL = :NOB_KONTROL, MAAS_KONTROL = :MAAS_KONTROL, SYSTEM =' +
+        ' :SYSTEM, NOB_TIPI = :NOB_TIPI'
+      'WHERE'
+      '  USER_ID = :Old_USER_ID')
+    SQLLock.Strings = (
+      'SELECT * FROM LOCAL_USER'
+      'WHERE'
+      '  USER_ID = :Old_USER_ID'
+      'FOR UPDATE NOWAIT')
+    SQLRefresh.Strings = (
+      
+        'SELECT LOCAL_USER.USER_ID, LOCAL_USER.PASS, LOCAL_USER.TC, LOCAL' +
+        '_USER.NOBET, LOCAL_USER.NOB_KONTROL, LOCAL_USER.MAAS_KONTROL, LO' +
+        'CAL_USER.SYSTEM, LOCAL_USER.NOB_TIPI FROM LOCAL_USER'
+      'WHERE'
+      '  USER_ID = :USER_ID')
+    Session = data.AKGUN
+    SQL.Strings = (
+      'select *'
+      '  from LOCAL_USER t'
+      ' where not exists (select *'
+      '          from per_personel s'
+      '         where s.tc_kimlik_no = t.tc'
+      '          AND   s.Tc_Kimlik_No IS NULL'
+      ')')
+    Left = 712
+    Top = 16
+    object QLOCAL_PERSONELUSER_ID: TStringField
+      FieldName = 'USER_ID'
+      Required = True
+      Size = 11
+    end
+    object QLOCAL_PERSONELPASS: TStringField
+      FieldName = 'PASS'
+      Size = 10
+    end
+    object QLOCAL_PERSONELTC: TStringField
+      FieldName = 'TC'
+      Size = 11
+    end
+    object QLOCAL_PERSONELNOBET: TStringField
+      FieldName = 'NOBET'
+      Size = 1
+    end
+    object QLOCAL_PERSONELNOB_KONTROL: TStringField
+      FieldName = 'NOB_KONTROL'
+      Size = 1
+    end
+    object QLOCAL_PERSONELMAAS_KONTROL: TStringField
+      FieldName = 'MAAS_KONTROL'
+      Size = 1
+    end
+    object QLOCAL_PERSONELSYSTEM: TStringField
+      FieldName = 'SYSTEM'
+      Size = 1
+    end
+    object QLOCAL_PERSONELNOB_TIPI: TFloatField
+      FieldName = 'NOB_TIPI'
+    end
+    object QLOCAL_PERSONELDR_NOBET: TStringField
+      FieldName = 'DR_NOBET'
+      Size = 1
+    end
+    object QLOCAL_PERSONELDR_NOBET_TIPI: TStringField
+      FieldName = 'DR_NOBET_TIPI'
+      Size = 1
+    end
+    object QLOCAL_PERSONELKULLANICI: TStringField
+      FieldKind = fkLookup
+      FieldName = 'KULLANICI'
+      LookupDataSet = data.LOOPKISI1
+      LookupKeyFields = 'USER_ID'
+      LookupResultField = 'ADI'
+      KeyFields = 'USER_ID'
+      Size = 50
+      Lookup = True
+    end
+    object QLOCAL_PERSONELBIRIM_TIPI: TStringField
+      FieldKind = fkLookup
+      FieldName = 'BIRIM_TIPI'
+      LookupDataSet = qnobet_tipleri
+      LookupKeyFields = 'SIRA_NO'
+      LookupResultField = 'ACIKLAMA'
+      KeyFields = 'NOB_TIPI'
+      Size = 50
+      Lookup = True
+    end
+  end
+  object qsomlu_birimler: TOraQuery
+    SQLInsert.Strings = (
+      'INSERT INTO NOBET_BIRIMLERI_YETKILI'
+      '  (KAD, BIRIM)'
+      'VALUES'
+      '  (:KAD, :BIRIM)')
+    SQLDelete.Strings = (
+      'DELETE FROM NOBET_BIRIMLERI_YETKILI'
+      'WHERE'
+      '  ROWID = :Old_ROWID')
+    SQLUpdate.Strings = (
+      'UPDATE NOBET_BIRIMLERI_YETKILI'
+      'SET'
+      '  KAD = :KAD, BIRIM = :BIRIM'
+      'WHERE'
+      '  ROWID = :Old_ROWID')
+    SQLLock.Strings = (
+      'SELECT * FROM NOBET_BIRIMLERI_YETKILI'
+      'WHERE'
+      '  ROWID = :Old_ROWID'
+      'FOR UPDATE NOWAIT')
+    SQLRefresh.Strings = (
+      
+        'SELECT NOBET_BIRIMLERI_YETKILI.KAD, NOBET_BIRIMLERI_YETKILI.BIRI' +
+        'M FROM NOBET_BIRIMLERI_YETKILI'
+      'WHERE'
+      '  ROWID = :Old_ROWID')
+    Session = data.AKGUN
+    SQL.Strings = (
+      'select t.*,t.rowid from NOBET_BIRIMLERI_YETKILI t')
+    MasterSource = DSLOCAL_PERSONEL
+    MasterFields = 'TC'
+    DetailFields = 'KAD'
+    IndexFieldNames = 'loopbirim'
+    Left = 832
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'TC'
+        ParamType = ptInput
+        Value = '45718572470'
+      end>
+    object qsomlu_birimlerROWID: TStringField
+      FieldName = 'ROWID'
+      Size = 18
+    end
+    object qsomlu_birimlerKAD: TStringField
+      FieldName = 'KAD'
+    end
+    object qsomlu_birimlerBIRIM: TStringField
+      FieldName = 'BIRIM'
+    end
+    object qsomlu_birimlerloopbirim: TStringField
+      FieldKind = fkLookup
+      FieldName = 'loopbirim'
+      LookupDataSet = QNOB_BIRIM
+      LookupKeyFields = 'BIRIM'
+      LookupResultField = 'ACIKLAMA'
+      KeyFields = 'BIRIM'
+      Size = 30
+      Lookup = True
+    end
+  end
+  object qnobet_tipleri: TOraQuery
+    Session = data.AKGUN
+    SQL.Strings = (
+      'select * from nobet_birim_tipi')
+    Left = 832
+    Top = 88
+  end
+  object QNOBET_TIPI: TOraQuery
+    SQLInsert.Strings = (
+      'INSERT INTO NOBET_BIRIM_TIPI'
+      '  (SIRA_NO, ACIKLAMA, KRMD_KURUM)'
+      'VALUES'
+      '  (:SIRA_NO, :ACIKLAMA, :KRMD_KURUM)')
+    SQLDelete.Strings = (
+      'DELETE FROM NOBET_BIRIM_TIPI'
+      'WHERE'
+      '  SIRA_NO = :Old_SIRA_NO')
+    SQLUpdate.Strings = (
+      'UPDATE NOBET_BIRIM_TIPI'
+      'SET'
+      
+        '  SIRA_NO = :SIRA_NO, ACIKLAMA = :ACIKLAMA, KRMD_KURUM = :KRMD_K' +
+        'URUM'
+      'WHERE'
+      '  SIRA_NO = :Old_SIRA_NO')
+    SQLLock.Strings = (
+      'SELECT * FROM NOBET_BIRIM_TIPI'
+      'WHERE'
+      '  SIRA_NO = :Old_SIRA_NO'
+      'FOR UPDATE NOWAIT')
+    SQLRefresh.Strings = (
+      
+        'SELECT NOBET_BIRIM_TIPI.SIRA_NO, NOBET_BIRIM_TIPI.ACIKLAMA, NOBE' +
+        'T_BIRIM_TIPI.KRMD_KURUM FROM NOBET_BIRIM_TIPI'
+      'WHERE'
+      '  SIRA_NO = :SIRA_NO')
+    Session = data.AKGUN
+    SQL.Strings = (
+      'select * from nobet_birim_tipi'
+      'order by sira_no')
+    Active = True
+    Left = 408
+    Top = 112
+  end
+  object DS_NOBET_TIPI: TOraDataSource
+    DataSet = QNOBET_TIPI
+    Left = 472
+    Top = 104
+  end
+  object DSKURUMLAR: TOraDataSource
+    DataSet = QKURUMLAR
+    Left = 448
+    Top = 32
+  end
+  object QKURUMLAR: TOraQuery
+    Session = data.AKGUN
+    SQL.Strings = (
+      
+        'select PPS.SIRA_NO,PPS.ACIKLAMA from per_personel_sabit pps wher' +
+        'e pps.turu='#39'CALKUR'#39)
+    Left = 400
+    Top = 32
+  end
+  object QVARDIYALAR: TOraQuery
+    SQLInsert.Strings = (
+      'INSERT INTO NOBET_PER_SAATI'
+      
+        '  (SAAT_ARALIK, SAAT, SIRA_NO, CKYS_KAR, MESAI_BAS_ZAM, MESAI_BI' +
+        'T_ZAM, NOB_SAY, MES_SAY, KARMED_ID, SABAH, OGLE, AKSAM, VARDIA_K' +
+        'ODU, SIRALAMA_NO, NOBET_TIPI)'
+      'VALUES'
+      
+        '  (:SAAT_ARALIK, :SAAT, :SIRA_NO, :CKYS_KAR, :MESAI_BAS_ZAM, :ME' +
+        'SAI_BIT_ZAM, :NOB_SAY, :MES_SAY, :KARMED_ID, :SABAH, :OGLE, :AKS' +
+        'AM, :VARDIA_KODU, :SIRALAMA_NO, :NOBET_TIPI)')
+    SQLDelete.Strings = (
+      'DELETE FROM NOBET_PER_SAATI'
+      'WHERE'
+      '  SIRA_NO = :Old_SIRA_NO')
+    SQLUpdate.Strings = (
+      'UPDATE NOBET_PER_SAATI'
+      'SET'
+      
+        '  SAAT_ARALIK = :SAAT_ARALIK, SAAT = :SAAT, SIRA_NO = :SIRA_NO, ' +
+        'CKYS_KAR = :CKYS_KAR, MESAI_BAS_ZAM = :MESAI_BAS_ZAM, MESAI_BIT_' +
+        'ZAM = :MESAI_BIT_ZAM, NOB_SAY = :NOB_SAY, MES_SAY = :MES_SAY, KA' +
+        'RMED_ID = :KARMED_ID, SABAH = :SABAH, OGLE = :OGLE, AKSAM = :AKS' +
+        'AM, VARDIA_KODU = :VARDIA_KODU, SIRALAMA_NO = :SIRALAMA_NO, NOBE' +
+        'T_TIPI = :NOBET_TIPI'
+      'WHERE'
+      '  SIRA_NO = :Old_SIRA_NO')
+    SQLLock.Strings = (
+      'SELECT * FROM NOBET_PER_SAATI'
+      'WHERE'
+      '  SIRA_NO = :Old_SIRA_NO'
+      'FOR UPDATE NOWAIT')
+    SQLRefresh.Strings = (
+      
+        'SELECT NOBET_PER_SAATI.SAAT_ARALIK, NOBET_PER_SAATI.SAAT, NOBET_' +
+        'PER_SAATI.SIRA_NO, NOBET_PER_SAATI.CKYS_KAR, NOBET_PER_SAATI.MES' +
+        'AI_BAS_ZAM, NOBET_PER_SAATI.MESAI_BIT_ZAM, NOBET_PER_SAATI.NOB_S' +
+        'AY, NOBET_PER_SAATI.MES_SAY, NOBET_PER_SAATI.KARMED_ID, NOBET_PE' +
+        'R_SAATI.SABAH, NOBET_PER_SAATI.OGLE, NOBET_PER_SAATI.AKSAM, NOBE' +
+        'T_PER_SAATI.VARDIA_KODU, NOBET_PER_SAATI.SIRALAMA_NO, NOBET_PER_' +
+        'SAATI.NOBET_TIPI FROM NOBET_PER_SAATI'
+      'WHERE'
+      '  SIRA_NO = :SIRA_NO')
+    Session = data.AKGUN
+    SQL.Strings = (
+      'select * from PDK_VARDIYALAR t')
+    Left = 488
+    Top = 32
+  end
+  object DSVARDIYALAR: TOraDataSource
+    DataSet = QVARDIYALAR
+    Left = 528
+    Top = 32
+  end
+  object dsNobet_Saatleri: TOraDataSource
+    DataSet = qnobet_saatleri
+    OnStateChange = dsNobet_SaatleriStateChange
+    Left = 600
+    Top = 32
+  end
+  object qnobet_saatleri: TOraQuery
+    SQLInsert.Strings = (
+      'INSERT INTO NOBET_PER_SAATI'
+      
+        '  (SAAT_ARALIK, SAAT, SIRA_NO, CKYS_KAR, MESAI_BAS_ZAM, MESAI_BI' +
+        'T_ZAM, NOB_SAY, MES_SAY, KARMED_ID, SABAH, OGLE, AKSAM, VARDIA_K' +
+        'ODU, SIRALAMA_NO, NOBET_TIPI)'
+      'VALUES'
+      
+        '  (:SAAT_ARALIK, :SAAT, :SIRA_NO, :CKYS_KAR, :MESAI_BAS_ZAM, :ME' +
+        'SAI_BIT_ZAM, :NOB_SAY, :MES_SAY, :KARMED_ID, :SABAH, :OGLE, :AKS' +
+        'AM, :VARDIA_KODU, :SIRALAMA_NO, :NOBET_TIPI)')
+    SQLDelete.Strings = (
+      'DELETE FROM NOBET_PER_SAATI'
+      'WHERE'
+      '  SIRA_NO = :Old_SIRA_NO')
+    SQLUpdate.Strings = (
+      'UPDATE NOBET_PER_SAATI'
+      'SET'
+      
+        '  SAAT_ARALIK = :SAAT_ARALIK, SAAT = :SAAT, SIRA_NO = :SIRA_NO, ' +
+        'CKYS_KAR = :CKYS_KAR, MESAI_BAS_ZAM = :MESAI_BAS_ZAM, MESAI_BIT_' +
+        'ZAM = :MESAI_BIT_ZAM, NOB_SAY = :NOB_SAY, MES_SAY = :MES_SAY, KA' +
+        'RMED_ID = :KARMED_ID, SABAH = :SABAH, OGLE = :OGLE, AKSAM = :AKS' +
+        'AM, VARDIA_KODU = :VARDIA_KODU, SIRALAMA_NO = :SIRALAMA_NO, NOBE' +
+        'T_TIPI = :NOBET_TIPI'
+      'WHERE'
+      '  SIRA_NO = :Old_SIRA_NO')
+    SQLLock.Strings = (
+      'SELECT * FROM NOBET_PER_SAATI'
+      'WHERE'
+      '  SIRA_NO = :Old_SIRA_NO'
+      'FOR UPDATE NOWAIT')
+    SQLRefresh.Strings = (
+      
+        'SELECT NOBET_PER_SAATI.SAAT_ARALIK, NOBET_PER_SAATI.SAAT, NOBET_' +
+        'PER_SAATI.SIRA_NO, NOBET_PER_SAATI.CKYS_KAR, NOBET_PER_SAATI.MES' +
+        'AI_BAS_ZAM, NOBET_PER_SAATI.MESAI_BIT_ZAM, NOBET_PER_SAATI.NOB_S' +
+        'AY, NOBET_PER_SAATI.MES_SAY, NOBET_PER_SAATI.KARMED_ID, NOBET_PE' +
+        'R_SAATI.SABAH, NOBET_PER_SAATI.OGLE, NOBET_PER_SAATI.AKSAM, NOBE' +
+        'T_PER_SAATI.VARDIA_KODU, NOBET_PER_SAATI.SIRALAMA_NO, NOBET_PER_' +
+        'SAATI.NOBET_TIPI FROM NOBET_PER_SAATI'
+      'WHERE'
+      '  SIRA_NO = :SIRA_NO')
+    Session = data.AKGUN
+    SQL.Strings = (
+      'select * from NOBET_PER_SAATI t'
+      'ORDER BY T.SIRALAMA_NO')
+    Left = 568
+    Top = 32
+    object qnobet_saatleriSAAT_ARALIK: TStringField
+      FieldName = 'SAAT_ARALIK'
+      Required = True
+      Size = 12
+    end
+    object qnobet_saatleriSAAT: TFloatField
+      FieldName = 'SAAT'
+    end
+    object qnobet_saatleriSIRA_NO: TFloatField
+      FieldName = 'SIRA_NO'
+      Required = True
+    end
+    object qnobet_saatleriCKYS_KAR: TStringField
+      FieldName = 'CKYS_KAR'
+      Size = 10
+    end
+    object qnobet_saatleriMESAI_BAS_ZAM: TStringField
+      FieldName = 'MESAI_BAS_ZAM'
+      Size = 8
+    end
+    object qnobet_saatleriMESAI_BIT_ZAM: TStringField
+      FieldName = 'MESAI_BIT_ZAM'
+      Size = 8
+    end
+    object qnobet_saatleriNOB_SAY: TStringField
+      FieldName = 'NOB_SAY'
+      Size = 1
+    end
+    object qnobet_saatleriMES_SAY: TStringField
+      FieldName = 'MES_SAY'
+      Size = 1
+    end
+    object qnobet_saatleriKARMED_ID: TFloatField
+      FieldName = 'KARMED_ID'
+    end
+    object qnobet_saatleriSABAH: TStringField
+      FieldName = 'SABAH'
+      Size = 1
+    end
+    object qnobet_saatleriOGLE: TStringField
+      FieldName = 'OGLE'
+      Size = 1
+    end
+    object qnobet_saatleriAKSAM: TStringField
+      FieldName = 'AKSAM'
+      Size = 1
+    end
+    object qnobet_saatleriVARDIA_KODU: TFloatField
+      FieldName = 'VARDIA_KODU'
+    end
+    object qnobet_saatleriSIRALAMA_NO: TFloatField
+      FieldName = 'SIRALAMA_NO'
+    end
+    object qnobet_saatleriNOBET_TIPI: TFloatField
+      FieldName = 'NOBET_TIPI'
+    end
+    object qnobet_saatleriloppvardia: TStringField
+      FieldKind = fkLookup
+      FieldName = 'loppvardia'
+      LookupDataSet = QVARDIYALAR
+      LookupKeyFields = 'VARDIYA_KODU'
+      LookupResultField = 'ACIKLAMA'
+      KeyFields = 'VARDIA_KODU'
+      Lookup = True
+    end
+    object qnobet_saatleriloop_nobet_tipi: TStringField
+      FieldKind = fkLookup
+      FieldName = 'loop_nobet_tipi'
+      LookupDataSet = QNOBET_TIPI
+      LookupKeyFields = 'SIRA_NO'
+      LookupResultField = 'ACIKLAMA'
+      KeyFields = 'NOBET_TIPI'
+      Lookup = True
+    end
+  end
+  object QSQL: TOraSQL
+    Session = data.AKGUN
+    AfterExecute = QSQLAfterExecute
+    Left = 80
+    Top = 320
+  end
+  object QSOR: TOraQuery
+    Session = data.AKGUN
+    Left = 104
+    Top = 280
+  end
+  object DSLPERSONEL: TDataSource
+    DataSet = LOOPKISI1
+    Left = 32
+    Top = 264
+  end
+  object DSBIRIM: TDataSource
+    DataSet = QNOB_BIRIM
+    OnStateChange = DSBIRIMStateChange
+    Left = 56
+    Top = 120
+  end
+  object DSLOCAL_PERSONEL: TOraDataSource
+    DataSet = QLOCAL_PERSONEL
+    OnStateChange = DSLOCAL_PERSONELStateChange
+    Left = 784
+    Top = 32
+  end
+  object UniScreenMask1: TUniScreenMask
+    Enabled = True
+    DisplayMessage = 'veriler a'#231#305'l'#305'yor'
+    TargetControl = Owner
+    Left = 60
+    Top = 416
+  end
+  object QNOB_BIRIM: TOraQuery
+    SQLInsert.Strings = (
+      'INSERT INTO NOBET_BIRIMLERI'
+      
+        '  (BIRIM, ACIKLAMA, NOBET_SORUMLUSU, RISKLI, AKTIF, AKGUN_ID, SI' +
+        'FRE, BIRIM_TIPI, ICAP)'
+      'VALUES'
+      
+        '  (:BIRIM, :ACIKLAMA, :NOBET_SORUMLUSU, :RISKLI, :AKTIF, :AKGUN_' +
+        'ID, :SIFRE, :BIRIM_TIPI, :ICAP)')
+    SQLDelete.Strings = (
+      'DELETE FROM NOBET_BIRIMLERI'
+      'WHERE'
+      '  BIRIM = :Old_BIRIM')
+    SQLUpdate.Strings = (
+      'UPDATE NOBET_BIRIMLERI'
+      'SET'
+      
+        '  BIRIM = :BIRIM, ACIKLAMA = :ACIKLAMA, NOBET_SORUMLUSU = :NOBET' +
+        '_SORUMLUSU, RISKLI = :RISKLI, AKTIF = :AKTIF, AKGUN_ID = :AKGUN_' +
+        'ID, SIFRE = :SIFRE, BIRIM_TIPI = :BIRIM_TIPI, ICAP = :ICAP'
+      'WHERE'
+      '  BIRIM = :Old_BIRIM')
+    SQLLock.Strings = (
+      'SELECT * FROM NOBET_BIRIMLERI'
+      'WHERE'
+      '  BIRIM = :Old_BIRIM'
+      'FOR UPDATE NOWAIT')
+    SQLRefresh.Strings = (
+      
+        'SELECT NOBET_BIRIMLERI.BIRIM, NOBET_BIRIMLERI.ACIKLAMA, NOBET_BI' +
+        'RIMLERI.NOBET_SORUMLUSU, NOBET_BIRIMLERI.RISKLI, NOBET_BIRIMLERI' +
+        '.AKTIF, NOBET_BIRIMLERI.AKGUN_ID, NOBET_BIRIMLERI.SIFRE, NOBET_B' +
+        'IRIMLERI.BIRIM_TIPI, NOBET_BIRIMLERI.ICAP FROM NOBET_BIRIMLERI'
+      'WHERE'
+      '  BIRIM = :BIRIM')
+    Session = data.AKGUN
+    SQL.Strings = (
+      'select * from nobet_birimleri t WHERE 1=1   ORDER BY 1')
+    Options.AutoClose = True
+    Active = True
+    Left = 112
+    Top = 128
+    object QNOB_BIRIMBIRIM: TStringField
+      FieldName = 'BIRIM'
+      Required = True
+      Size = 6
+    end
+    object QNOB_BIRIMACIKLAMA: TStringField
+      FieldName = 'ACIKLAMA'
+      Size = 40
+    end
+    object QNOB_BIRIMNOBET_SORUMLUSU: TStringField
+      FieldName = 'NOBET_SORUMLUSU'
+      Size = 11
+    end
+    object QNOB_BIRIMRISKLI: TStringField
+      FieldName = 'RISKLI'
+      Size = 1
+    end
+    object QNOB_BIRIMAKTIF: TStringField
+      FieldName = 'AKTIF'
+      Size = 1
+    end
+    object QNOB_BIRIMAKGUN_ID: TStringField
+      FieldName = 'AKGUN_ID'
+    end
+    object QNOB_BIRIMSIFRE: TStringField
+      FieldName = 'SIFRE'
+    end
+    object QNOB_BIRIMBIRIM_TIPI: TFloatField
+      FieldName = 'BIRIM_TIPI'
+    end
+    object QNOB_BIRIMICAP: TStringField
+      FieldName = 'ICAP'
+      Size = 1
+    end
+    object QNOB_BIRIMLBIRIM_TIPI: TStringField
+      FieldKind = fkLookup
+      FieldName = 'LBIRIM_TIPI'
+      LookupDataSet = QNOBET_TIPI
+      LookupKeyFields = 'SIRA_NO'
+      LookupResultField = 'ACIKLAMA'
+      KeyFields = 'BIRIM_TIPI'
+      Lookup = True
+    end
+    object QNOB_BIRIMLNOBET_SORUMLUSU: TStringField
+      FieldKind = fkLookup
+      FieldName = 'LNOBET_SORUMLUSU'
+      LookupDataSet = LOOPKISI1
+      LookupKeyFields = 'USER_ID'
+      LookupResultField = 'ADI'
+      KeyFields = 'NOBET_SORUMLUSU'
+      Lookup = True
+    end
+  end
+  object LOOPKISI1: TOraQuery
+    Session = data.AKGUN
+    SQL.Strings = (
+      
+        'select P.PERSONEL_ADI || '#39' '#39' || P.SOYADI ADI, P.TC_KIMLIK_NO USE' +
+        'R_ID'
+      '  from PER_PERSONEL P'
+      
+        ' WHERE p.tc_kimlik_no is not null /*NVL(P.ISTEN_AYRILDI, '#39'F'#39') <>' +
+        ' '#39'T'#39'*/'
+      ' ORDER BY P.PERSONEL_ADI, P.SOYADI')
+    Active = True
+    Left = 32
+    Top = 208
+  end
+  object UniNativeImageList1: TUniNativeImageList
+    Left = 420
+    Top = 304
+    Images = {
+      06000000FFFFFF1F05F609000000000100020010100000010008006805000026
+      0000001010000001002000680400008E05000028000000100000002000000001
+      0008000000000040010000000000000000000000010000000000005B58FF005C
+      58FF007594FF002749FF00203BFF001830FF00172DFF00FFFFFF0000000000A0
+      B9FF005A58FF001323FF001B36FF001426FF001D37FF005B56FF00233EFF0015
+      2AFF001C39FF0000000000000000009FB7FF0000000000000000002C4FFF0046
+      3EFF0000000000111EFF000E12FF001E3BFF002645FF00000000001A33FF0000
+      0000009EB8FF00000000002441FF00000000001424FF004D4AF5000000000000
+      000000111BFF000F17FF001528FF000000000000000000000000000000000012
+      29FF002340FF000000000094ADFF00172EFF000000000000000000294EFF006B
+      8BFF004E4BFA00000000000000000000000000889DFF00000000000000000027
+      4CFF0000000000000000009BB4FF00000000000C0CD90000000000889EFF0000
+      000000000000008C9FFF00514EFF002847FF003453FF004A6CFF001D1CE30000
+      0000000000000000000000000000005755FF002748FF00000000000000000000
+      0000002A4DFF007994FF0000000000000000005A56FF00000000000000F70010
+      18FF0000000000000000007897FF001C37FF0000000000000000002547FF0000
+      000000000000000000000000000000000000000000000000000000000000002A
+      4CFF000000000000000000000000003257FF00000000005F7EFF00000000001F
+      3DFF00000000000200DB0000000000000000001832FF00000000000000000000
+      0000009AB5FF0000000000000000002041FF000D0DFF001630FF000000000000
+      00000000000000000000000000000000000000000000000200EE000000000012
+      26FF000E14FF00000000000500CD00000000002342FF001B33FF0097B1FF0000
+      000000000000000000000092AAFF004467FF001930FF008EA6FF000000000091
+      A8FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000808080808
+      0808080808080808080808080808080808080808080808080808080808080808
+      0808080808080808080808080808080808080808080808080808080808080808
+      08080808080808080808084641715696791D209E2C262A611C8694505A18031E
+      1004659706110B1B2B927B275B7775384D682432120E05350D0B8F3A02640239
+      4F9D4E851D0C7E873191605522090915824498349CA19F4B483E4C1900000000
+      01010000000A0A000F5E19080808080808080808080808080808080808080808
+      0808080808080808080808080808080808080808080808080808080808080808
+      080808080808080808080808080808080808080808080808080808FFFF0000FF
+      FF0000FFFF0000FFFF0000FFFF00000000000000000000000000000000000000
+      00000000000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00002800000010
+      0000002000000001002000000000004004000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000606BCD60A10D6E10408CFE10509D0E10508CFE10409CFE10408CEE104
+      07CDE10306CCE10305CBE10205CAE10303CAE10202C7E10502C5E10200C7E102
+      00B6D61820D4FF2C4AF2FF1930EEFF1C31EEFF172DEEFF1629EEFF1328EDFF12
+      23EDFF101FEDFF0F1BECFF0D16ECFF0C12ECFF0B0EEBFF0A0BEAFF0A07ECFF03
+      01CDFF4A53F2F24674FFFF2148FFFF2A50FFFF294BFFFF2646FFFF2341FFFF20
+      3DFFFF1D38FFFF1B35FFFF182DFFFF1628FFFF1421FFFF121CFFFF1118FFFF07
+      05EBF27173F7F381A0FFFF4668FFFF3256FFFF2649FFFF2445FFFF2140FFFF1D
+      3BFFFF1A36FFFF1732FFFF142EFFFF122AFFFF0F25FFFF0D1DFFFF0E1EFFFF00
+      02F1F3696DFDF28EB0FFFF7493FFFF7594FFFF6989FFFF5578FFFF476BFFFF3F
+      60FFFF3252FFFF2E4DFFFF2B49FFFF2944FFFF2541FFFF223AFFFF223CFFFF14
+      1BFDF27176FFFFA6C4FFFF91ACFFFF94B1FFFF96AFFFFF95B0FFFF94B0FFFF93
+      B0FFFF93ACFFFF90AAFFFF8EA6FFFF8CA4FFFF8A9FFFFF869CFFFF88A6FFFF61
+      68FFFF524CFFD66C6EFFE16765FFE16766FFE16766FFE16766FFE16766FFE165
+      65FFE16564FFE16664FFE16464FFE16465FFE16562FFE16462FFE16868FFE150
+      4BFFD60000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000FFFF0000FFFF0000FFFF0000FFFF000000000000000000000000000000
+      000000000000000000000000000000FFFF0000FFFF0000FFFF0000FFFF0000FF
+      FF0000FFFFFF1F05F60A00000000010002001010000001000800680500002600
+      00001010000001000800680500008E0500002800000010000000200000000100
+      0800000000004001000000000000000000000001000000000000128C230021C0
+      4F001FC658001FC85B0019E084001BAE42001FC65A0012DE7F001ED16B008AFF
+      CE001ECE66001CD5710031C1570021C555001ED068001ED069001FC95D001ED1
+      6D001FCB60001FC95E001CD876001ED36E005CCB7C001EC353001FC657000B6F
+      0D0021C04D0022C34D0018D570006EE5A0000B6F0F001CD674001CD3700021C2
+      50001FCD620021BE4C0019DE81001CCC610022C24B001CD36E0021C24F001FC5
+      57001BDB7C0021C3530019C35E001EC252002CBB53001CD573001FCD630019E0
+      830021BE4A0018D4710072F2AF0055F0A20053F2A500278D34001DAC3B002083
+      29001CD6730018D16D006FEEAA002890350055ED9F001BDB7B0010801C001CD9
+      78001FC85D004FF4A7006DEAA6004CEFA30017DA79006ED184006FD58C001BD9
+      790012831D001CAA3B0019CF6D001ED36D001DCF680070ECA6001BC658001BCB
+      6800128720001BC864001FCD65004FED9C0052E089001BC95F004FEE9E00128E
+      260029963B0072D28800299B3E0017D8770018D7760019D273001CAB3C006ED0
+      86006ED0840019D46F001CAF3F006EF0AA001CAD3E0014D37000289338001BD9
+      78001CA8390019DC7E004EF0A2001BDC7E00128B23001FCE65001BC75B006CFF
+      BD006ED2870055E28A0054E38F0014DA77001BC65A0046CE780053E89A0052E0
+      880070ECA8001FCB5E006EF0AC001DCD64001BC95D0021C3550052E28B004FEE
+      9F0051EB9B001BD3700017D8750052E38D002B9E410052DD8600249E3C001E98
+      32001BB44D001A751C00086B0B00FFFFFF000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000008E8E8E8E8E8B
+      8B1E198C8C8E8E8E8E8E8E8E8E8E8E8B6223326A8C8E8E8E8E8E8E8E8E8E8E8B
+      47011A4B8C8E8E8E8E8E8E8E8E8E8E8B722D21668C8E8E8E8E8E8E8E8E8E8E8B
+      482B17648C8E8E8E8E8E398B8B8B8B8C160602058C8C8C8C8C8C378A8A8A8A8A
+      16100305058A8A8A8A4068332F27110F0E542213100318290D525A84142F0B4D
+      080E0A3012104206026E86456C5855781C20154E258580798789888888888888
+      1D3A0B2C0000000000008E8E8E8E8E89442A3F53898E8E8E8E8E8E8E8E8E8E89
+      4F246B51898E8E8E8E8E8E8E8E8E8E893C04045F898E8E8E8E8E8E8E8E8E8E89
+      65070767898E8E8E8E8E8E8E8E8E8E882E0C0C2E888E8E8E8E8EF81F0000F81F
+      0000F81F0000F81F0000F81F0000000000000000000000000000000000000000
+      000000000000F81F0000F81F0000F81F0000F81F0000F81F0000280000001000
+      0000200000000100080000000000400100000000000000000000000100000000
+      0000128C230021C04F001FC658001FC85B0019E084001BAE42001FC65A0012DE
+      7F001ED16B00FFFFFF001ECE66001CD5710031C1570021C555001ED068001ED0
+      69001FC95D001ED16D001FCB60001FC95E001CD876001ED36E005CCB7C001EC3
+      53001FC657000B6F0D0021C04D000000000018D570006EE5A0000B6F0F000000
+      00001CD3700021C250001FCD620021BE4C0019DE81001CCC6100000000001CD3
+      6E00000000001FC557001BDB7C0021C3530019C35E001EC252002CBB53001CD5
+      73001FCD63000000000021BE4A0018D47100000000000000000000000000278D
+      340000000000208329001CD67300000000006FEEAA0000000000000000001BDB
+      7B0010801C00000000001FC85D00000000006DEAA6004CEFA300000000006ED1
+      84006FD58C0000000000000000001CAA3B00000000001ED36D001DCF680070EC
+      A600000000001BCB6800128720001BC864001FCD65004FED9C00000000000000
+      00004FEE9E000000000029963B000000000000000000000000000000000019D2
+      730000000000000000006ED08400000000001CAF3F006EF0AA001CAD3E0014D3
+      700028933800000000001CA8390019DC7E004EF0A20000000000128B23000000
+      000000000000000000006ED28700000000000000000000000000000000000000
+      000053E89A0052E0880000000000000000000000000000000000000000000000
+      000052E28B0000000000000000000000000017D8750052E38D002B9E410052DD
+      8600249E3C001E9832001BB44D001A751C00086B0B0000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00001B1B1B1B1B8B8B1E198C8C1B1B1B1B1B1B1B1B1B1B8B6223326A8C1B1B1B
+      1B1B1B1B1B1B1B8B47011A4B8C1B1B1B1B1B1B1B1B1B1B8B722D21668C1B1B1B
+      1B1B1B1B1B1B1B8B482B17648C1B1B1B1B1B398B8B8B8B8C160602058C8C8C8C
+      8C8C378A8A8A8A8A16100305058A8A8A8A4068332F27110F0E54221310031829
+      0D525A84142F0B4D080E0A3012104206026E86456C5855781C20154E25858079
+      87898888888888881D3A0B2C0000000000001B1B1B1B1B89442A3F53891B1B1B
+      1B1B1B1B1B1B1B894F246B51891B1B1B1B1B1B1B1B1B1B893C04045F891B1B1B
+      1B1B1B1B1B1B1B8965070767891B1B1B1B1B1B1B1B1B1B882E0C0C2E881B1B1B
+      1B1BF81F0000F81F0000F81F0000F81F0000F81F000000000000000000000000
+      0000000000000000000000000000F81F0000F81F0000F81F0000F81F0000F81F
+      0000FFFFFF1F05F6090000000001000200101000000100080068050000260000
+      001010000001002000680400008E050000280000001000000020000000010008
+      00000000004001000000000000000000000001000000000000000000002119D6
+      002825F1000000000000000000475FF100405AF1003E58F10000000000000000
+      0000000000000000005C78F4002017D4000F0B9E003733EA006A6CE200000000
+      00415DF200415CF1004055F1001F17E60000000000000000001E15CD003139E3
+      002A35EF0000000000322BEE0000000000000000002018D90000000000000000
+      0000000000374DEF003950F000445FF1003042EF003951F0004663F200000000
+      003D57F0000000000000000000201DD5000000000000000000000000006B87F5
+      001C13C9002C36EE002526EF002E39F0002623F40000000000000000002B32EE
+      00150EB3002828EE0000000000110CA300130DAA003D56F0003345EF00000000
+      0000000000000000001B16AD00000000004865F2000000000000000000000000
+      00000000004767F200000000002F3FED000000000000000000000000003346F0
+      007374E6002428DA00272BDB00000000000000000000000000140FAB003B4AEB
+      001A14B7001510AB000000000000000000000000000000000000000000000000
+      002221D7002D27BF00000000000000000000000000322BEB0000000000000000
+      0000000000000000000000000000000000000000001912B80000000000000000
+      002A2AF100000000000000000000000000838DF5002118EB0000000000000000
+      00000000002C33EE00000000003043EF007375E8000000000000000000000000
+      006C83F4003F59F200000000005C6AF300000000000000000000000000000000
+      000000000000000000000000007F86F200738CF5005359F3003A50EF004254EE
+      00000000003A52F1000000000000000000354DF000000000008088F2006F74E7
+      00738BF5003C36EF000000000000000000595EF4004561F100000000002118E1
+      004661F2004562F200000000001811BE0000000000757BEA002017E1001711BE
+      000000000000000000433DF000000000003643E8003A34E5008595F700000000
+      0000000000231BDF00000000007278E9003341E6006C84F500423BE600302ACA
+      0000000000433DED0000000000000000007072E4002B27B9003649EC00000000
+      005664F40000000000000000000000000000000000000000004866F3004867F3
+      00261FC7000000000000000000000000000000000000000000343EE8003848EB
+      000000000000000000000000003730EC00000000001C13DD0000000000000000
+      00000000007378F0000000000000000000000000000000000000000000000000
+      00848CF400000000000000000000000000000000000000000000000000000000
+      0000000000000000002017D800000000002F43EF001D14DD00000000003142EF
+      008494F600000000008189F400231CE000000000000000000000000000000000
+      002D2ABA000000000000000000000000007F89F200FFFFFF00003D3E0E000000
+      00000000000E3E3D004436022D5B0000000000005B2D023644BF343B72625800
+      0000005862723B34FA3A528F397B535A00005A537B399E523A00637E1A333554
+      6F6F5435331ABE63000000A9A7C2F1264D4D26268510A50000000000B9B57D40
+      515140EE99CA000000000000003291962323961432000000000000000018C093
+      24242790180000000000000001B62A3F05053F2A190D0000000000ECAE120607
+      F2B0830613191F000000F5D19F25828DEFD798B725A2D0B300A859C828A3DBAF
+      0000B8FEA228C959A10F4B468EF4150000000015E29A464B0F67310C76BB0000
+      00000000D5760C3167001C9B77000000000000000077AC1C008FF1000007E000
+      0003C000000180000080010000C0030000E0070000F00F0000F00F0000E00700
+      00C0030000800100000180000003C0000007E000008FF1000028000000100000
+      0020000000010020000000000040040000000000000000000000000000000000
+      0000000000140EAEFF1711B8FF100BA1FF000000000000000000000000000000
+      0000000000000000000000000000000000100BA1FF1711B8FF140EAEFF000000
+      001F1AB5FF2522E9FF2723F1FF1F1BD1FF130EA6FF0000000000000000000000
+      00000000000000000000000000130EA6FF1F1BD1FF2723F1FF2522E9FF1F1AB5
+      FF3D3AC8FF4648F6FF2425F1FF2A2BF3FF2121D4FF140FADFF00000000000000
+      000000000000000000140FADFF2121D4FF2A2BF3FF2425F1FF4648F6FF3D3AC8
+      FF221CB6FF6262E1FF444BF3FF262DEFFF2C33F2FF2326D7FF1812B3FF000000
+      00000000001812B3FF2326D7FF2C33F2FF262DEFFF474DF4FF6262E1FF221CB6
+      FF00000000241DBBFF6566E3FF4853F3FF2934EFFF2F3BF2FF262BD9FF1A13BA
+      FF1A13BAFF262BD9FF2F3BF2FF2834EFFF4752F3FF5F61DFFF241DBAFF000000
+      0000000000000000002621C2FF656AE5FF4756F3FF2C3DF0FF3041F1FF2B36E4
+      FF2B36E4FF3041F1FF2D3DF0FF4A59F3FF5D5FE0FF2119BFFF00000000000000
+      000000000000000000000000002721C6FF6267E6FF4356F2FF3044F0FF3448F2
+      FF3448F2FF3044EFFF4255F2FF6166E5FF221AC4FF0000000000000000000000
+      00000000000000000000000000000000002C23CCFF4551E9FF354DF1FF364CEF
+      FF364CEFFF354DF0FF4251EAFF2B23CDFF000000000000000000000000000000
+      00000000000000000000000000000000001D14CEFF3240E6FF3C54F2FF3850F0
+      FF384FF0FF3B54F2FF3445E9FF1D15CEFF000000000000000000000000000000
+      000000000000000000000000001F17D4FF313EE4FF3E58F1FF3953F0FF455EF2
+      FF455FF2FF3A53F0FF3E57F0FF303AE3FF1F15D3FF0000000000000000000000
+      0000000000000000002018D9FF3542E7FF425FF3FF3D59F1FF556EF3FF737FF2
+      FF737EF2FF566EF3FF3D59F1FF425EF3FF313AE4FF1F16D9FF00000000000000
+      00000000002018DEFF3744E9FF4663F2FF405DF1FF5C77F3FF6E76EFFF3028DF
+      FF2E25DFFF7078F0FF5D77F4FF405DF1FF4562F2FF333DE8FF2117DDFF000000
+      00221BE2FF3947ECFF4A69F3FF4462F2FF5F7AF3FF686EF0FF271FE2FF000000
+      00000000002C23E2FF717AF1FF607BF4FF4362F2FF4A69F3FF3846EBFF2019E2
+      FF4144ECFF5372F4FF4464F2FF6481F4FF6E76F2FF271EE6FF00000000000000
+      0000000000000000002D25E7FF747CF2FF6480F4FF4564F2FF5270F3FF3D41EB
+      FF4441EDFF7B8FF5FF7A94F6FF737BF3FF2D24EAFF0000000000000000000000
+      000000000000000000000000002D24EAFF737CF3FF7A93F6FF7A8FF6FF4441ED
+      FF000000004845F0FF5A59F2FF2D24EDFF000000000000000000000000000000
+      00000000000000000000000000000000002D24EDFF5959F2FF4844F0FF000000
+      008FF1000007E0000003C000000180000080010000C0030000E0070000F00F00
+      00F00F0000E0070000C0030000800100000180000003C0000007E000008FF100
+      00FFFFFF1F05F609000000000100020010100000010008006805000026000000
+      1010000001002000680400008E05000028000000100000002000000001000800
+      00000000400100000000000000000000000100000000000000C5FA0003B8F800
+      00000000000000000000000001E7F6000975D80004F1F6000000000005F2F700
+      00000000FFFFFF00000000002662C7001482E0001342BC000E3BB40000000000
+      06268F00052691001D77DC000C34B5000000000000000000113CB80000000000
+      1582E10000000000000000006277910076889400000000000000000000000000
+      00000000000000000000000000000000000000000000000004F7FC006188AE00
+      1B59CF000E5FCD000000000000000000000000001751CB000000000000000000
+      164CC5000A77D9003D5B8100000000000000000000000000000000001556CB00
+      000000000000000000000000104BCA000000000090C3E9000E7DE10000000000
+      0E3DC100000000000E44C6003790E8004F7A8700AAEAFF000000000000000000
+      00000000000000000000000000000000000000000920F600DBF5FF00FFFEF300
+      0000000061BDF1001135E00001CFF90000000000000000000000000000000000
+      00000000000000000000000005F2F6000000000000000000103BBB0000000000
+      000000001549C3000000000000000000FFF7F300000000000001D0005D649300
+      4FCAFE0000000000115CD800000000000000000000000000000000000977DA00
+      33D3FE000000000000000000081DF20000000000000000004E717F0000000000
+      61C3E700000000001238DD00000000000000000000B7F8005962930000000000
+      60D6FF0000000000000000007DD5EC000C3EC000000000001482E10000000000
+      0000000000000000000000001250CF000000000071D5FF00000000000D52D100
+      0000000000056700000000000F37B9000613F200000000000E43C40000000000
+      000000000000000000000000092AA5000000000091CEF2000000000000000000
+      01E8F60000000000000000003577E60000000000000000001041F50000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000001312020202020202
+      02020202020202021393536A141402020202020202020202029F478F822B9D02
+      0202020202020202023F50727F4071100202020202020202020D0B55007F400E
+      1802020202020202020D850905000140060F020202020202020215850905007F
+      40880F0202020202020202958509050001400663020202020202020260855D05
+      007F401A320202020202020202427A0705000140333D02020202020202028685
+      0705007F4034390202020202020202988507A2007851692F0202020202020202
+      448528466680687C0202020202020202028D290B1D4F96540202020202020202
+      0202911E6CA8750202020202020202020202022A45A502023FFF000003FF0000
+      81FF000080FF0000807F0000803F0000C01F0000E00F0000F0070000F8030000
+      FC010000FE000000FF000000FF800000FFC10000FFE300002800000010000000
+      2000000001002000000000004004000000000000000000000000000000000000
+      0A2B95FF021C80FB0024973C1A66D8451766D121000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      092A927B000058FF4E9FDFFF4CBFF8FF1467D4FF0B30ADB20000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000A81338AADDCFFC3FFFFFF95EBFFFF58D0FDFF0773D9FF0C33AFD400000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0E42B14692BAE5FFFFFFFFFF79DFFFFF0EA4EEFF0B6DD5FF0E7FE0FF1046BBDA
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000001C4ABCB7DBFFFFFF06DFFAFF00C3FCFF119EEAFF1272D7FF0D80E1FF
+      134BC0D300000000000000000000000000000000000000000000000000000000
+      000000000016A8B535B9E4FF0AFFFFFF00D8F6FF00C8FEFF119CEAFF1271D6FF
+      0D7FDFFF154DC2DA000000000000000000000000000000000000000000000000
+      00000000000000000B2EB4DA3AD2ECFF12FFFFFF00D9F6FF00C8FEFF119CEAFF
+      1271D5FF0D80DEFF1550C4D30000000000000000000000000000000000000000
+      000000000000000000000000102DB6D339D4EDFF12FFFFFF00D8F6FF00C8FEFF
+      119CEAFF1271D5FF0D7FDFFF1651C9DA00000000000000000000000000000000
+      000000000000000000000000000000001233B8DA3AD1ECFF0CFFFDFF00D9F6FF
+      00C8FEFF119CEAFF126FD5FF0C80DFFF1A5BCBD3000000000000000000000000
+      00000000000000000000000000000000000000001637BDD359F0F6FF07FFFBFF
+      00D8F6FF00C8FEFF119CEAFF1371D6FF0B7FE3FF0047CADA0000000000000000
+      000000000000000000000000000000000000000000000000294CC4DA67F6F8FF
+      03FFFAFF00D8F6FF00C8FEFF0EA9F7FF0052BEFF627590FF5684D3D300000000
+      000000000000000000000000000000000000000000000000000000002D4FC8D3
+      68F8F9FF05FFFAFF00E6FFFF00A4E9FF627992FFFFFFE9FF7976B8FF0032CBCB
+      0000000000000000000000000000000000000000000000000000000000000000
+      2E53CADA66FFFFFF00E9E1FF639AA3FFFFFFFCFF6B6FAAFF0000DDFF0D27EFFF
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000001E59CFD380B6BCFFFFFFFCFF6D7CADFF0000DAFF0007FFFF0D26E8FF
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000004474E3DA84A6BCFF0C6CE2FF1458FFFF0B21EDFF1130E026
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000953D0C43FADF7F92982EDEE103AEA1F00000000
+      07FF000003FF000001FF000000FF0000807F0000803F0000C01F0000E00F0000
+      F0070000F8030000FC010000FE000000FF000000FF800000FFC00000FFE10000
+      FFFFFF1F05F60900000000010002001010000001000800680500002600000010
+      10000001002000680400008E0500002800000010000000200000000100080000
+      0000004001000000000000000000000001000000000000F6E2A700E4A32A00FA
+      EFD000DB8B1100E3A32A00CD7D1B0000000000F7E4AB000000000000000000DF
+      9A2600000000000000000000000000000000000000000000000000BA61120000
+      000000FCEFD20000000000FAEBCA000000000000000000F7E3A9000000000000
+      0000009D3B0100F8E7B600000000000000000000000000D989120000000000FD
+      F2D500E29D220000000000F6E1A400FAF0D20000000000F7E4AA00FDF0D40000
+      00000000000000F6E2A600FCEFD00000000000E4A42A00FBF1D3000000000000
+      000000F6E9BE00F5E8BC00CD7B1900B1540900E9C9860000000000FAEFCF00EA
+      CC86000000000000000000C97418000000000000000000000000000000000000
+      000000AB4E0800FBF9F800CE7F190000000000DE931400DA870C000000000000
+      00000000000000BA60110000000000DC8B1000AD4F0600000000000000000000
+      00000000000000E3A3290000000000000000000000000000000000E099210000
+      0000000000000000000000F8F7F300D2954500000000000000000000000000E4
+      A42D000000000000000000000000000000000000000000EBBC5600EFE3D40000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000E9BE670000000000000000000000000000
+      000000000000000000000000000000E8AE340000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000FCF9F9000000000000000000000000000000000000000000E5C5920000
+      000000FEFFFF00F9F4ED0000000000E7D3B60000000000000000000000000000
+      0000000000000000000000000000000000000000000000FBFBFD000000000000
+      000000000000000000000000000000EAC26D0000000000FFFEFD000000000000
+      000000000000000000000000000000000000000000000000000000D28C2E0000
+      0000000000000000000000F5E1AE000000000000000000D89C3D000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000F9F2E60000000000F9F6F2000000000000000000EE
+      D396000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000DCA4480000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000FAF6F000000000000000000000
+      000000AF4F090000000000AF4F0A0000000000BD631200C0691400FEFEFF00DD
+      921500DF981B00E19D2100FFFFFF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000060606060605054545
+      053D060606060606060635204E030303034E203506060606063DF247F2F2F2F2
+      F2F247F23D0606063D23F4F4F4F4F4F4F4F4F4F4233D06060A2F040401010404
+      010101012F0A064CDBF3F359F359F3F3F3F3F3F3F37E4C4C68F548A86294A848
+      48A848A848544CF068F526F1B1C55EB191F196A069B8EF11B593F144B8E7695E
+      A069A0695D6811EDB5F176A068C78B68A068A068A068EBEDB5A6CACACACACACA
+      CACACACAA691EB063A13252C0000000000002C25133A06063633151C18280707
+      28181C1533360606064F343039020202023930343606060606064F3722292D2D
+      2922374F06060606060606061B1B43431B1B0606060606F81F0000E0070000C0
+      0300008001000080010000000000000000000000000000000000000000000000
+      0000008001000080010000C0030000E0070000F81F0000280000001000000020
+      0000000100200000000000400400000000000000000000000000000000000000
+      000000000000000000000000000000D685214CD6881DB9D8891CFEDB8A1BFEDB
+      8A1BFEDB8D1DFED98C1EB9D686214C0000000000000000000000000000000000
+      00000000000000D3801F0CD5821FD9DB8B13E5DA880FFFDC8C0DFFDC8A0DFFDC
+      8A0DFFDC8B0CFFD9840BFFE0921BFFD5831FD9D3801F0C000000000000000000
+      000000D27A1F0AD5821CD6DD9217FFDF9615FFDE9415FFDE9317FFDD9317FFDD
+      9317FFDE9317FFDE9415FFDE9414FFE7A01DFFD5831DF0D27A1F0A0000000000
+      000000D0781DD8E19A20FFE3A020FFE29D21FFE19E21FFE29E21FFE29D21FFE1
+      9D21FFE19D20FFE19E21FFE19E21FFE4A422FFE8A324FFD0781DD800000000C9
+      6E194EDB9322E9E6A224FFE29C1FFFE29C1FFFE29C1FFFE29C1FFFE29C1FFFE2
+      9C1FFFE29C1FFFE29C1FFFE29C1FFFE29C1FFFEAA92CFFE1992BFCC96F194CCD
+      7518BCE9B144FFE1981EFFE1981EFFE1981EFFE1981EFFE1981EFFE1981EFFE1
+      981EFFE1981EFFE1981EFFE1981EFFE1981EFFE1981EFFEAAE33FFCC7519AFD0
+      842DFEE5A936FFFFFFFFFFD98500FFFFFFFFFFE4A72EFFF9F6EBFFFEFFFFFFD9
+      8500FFD98500FFFFFFFFFFD98500FFFFFFFFFFD98500FFE4A72EFFCD8029FCD8
+      9341FFE4A42DFFFFFFFFFFF8EDD7FFFFFFFFFFD08531FFFAF5EBFFD89341FFD0
+      8531FFE7C195FFFFFFFFFFE9D2B3FFFFFFFFFFEDDED5FFD69B36FFD28934FBD2
+      8A3BFFF2DAA6FFFFFFFFFFFFFFFFFFFCFAFBFFD69B36FFFCF7EEFFF3E8D2FFD3
+      9445FFFDFDFBFFEDDED5FFFFFFFFFFEDDED5FFF8F4F6FFE7BA58FFCC7E25F9CB
+      7F39FEF3DCA4FFFFFFFFFFE5BB6EFFFBFBFEFFE7BA58FFFBF6F3FFFBFAFAFFE7
+      BA58FFFCFCFEFFE7BA58FFFAFAFFFFE7BA58FFFDFDFFFFE7BA58FFBF6A1EF8C0
+      6615BCF6E4B1FFE6BC6FFFEDD296FFEDD296FFEDD296FFEDD296FFEDD296FFED
+      D296FFEDD296FFEDD296FFEDD296FFEDD296FFE6BC6FFFE6C58FFFBF65149EB1
+      46004EE3B77BFFFFFFE0FFF6E2A6FFF7E2A1FFF8E3A2FFF8E3A3FFF8E3A4FFF8
+      E4A7FFF8E4A7FFF8E6A9FFF8E4A3FFF9E6AAFFFFFFE6FFE4BA7CF5B247004B00
+      000000B45001D8F5E6B8FFFFFFE9FFF7E7BAFFF6E4AEFFF7E3A9FFF7E2A7FFF7
+      E2A7FFF7E3A9FFF6E4ADFFF7E7B7FFFFFFF1FFF6E7BAFFB45001D60000000000
+      000000B14A060ABD5F0CF0F7E8B8FFFFFEEEFFFFF9E0FFFAEDCCFFF8EAC3FFF8
+      EAC3FFFAECCBFFFDF4D6FFFFFFE4FFF7EABFFFBD5F0CF0B14A060A0000000000
+      00000000000000AA40030CAE4900D9E0B576FFFEF1C6FFFFFFF2FFFFFFFFFFFF
+      FFFBFFFFFFE2FFFBEEBEFFE0B57AFFAE4900D9AA40030C000000000000000000
+      000000000000000000000000000000A233004CB95D10B9C07337FAC98244FBC9
+      8245FBBF7439F7B95E12B9A233004C00000000000000000000000000000000F0
+      0F0000C003000080010000800100000000000000000000000000000000000000
+      0000000000000000000000000000008001000080010000C0030000F00F0000FF
+      FFFF1F05F6090000000001000200101000000100080068050000260000001010
+      000001002000680400008E050000280000001000000020000000010008000000
+      000040010000000000000000000000010000000000000000000000000000E59C
+      1C00E5A94200E2AD5C0000000000D4D2D10000000000AEABB500C1BEC7007C71
+      760000000000D3D1D000F1F1F0000000000000000000E5E4E300AC5A1700C47D
+      3300CC8B3B00ECBB5C00D4D3D500F1CA7500F2CD7900BC722800EABE6B000000
+      0000F0C56C0000000000F4D27D0000000000E5E3E200F5D4800000000000DEDE
+      DC0000000000DDDCDB00000000000000000000000000000000009D9AA100E0A9
+      5000908F9C00F8D98C00F6D98D00BAB7BA00CE893400E0DFDD0086767E000000
+      000063565E00E49A15000000000000000000000000006D5E6500F4F5F3000000
+      000000000000E3E2E100E7A22B00BB6C210000000000B3A9AB00000000005447
+      4D0000000000F0F0EF00AFA4A600ECB24400DBD9D900D7D6D700E9AB3900E7A7
+      3200B8B5BF003B313800EEB54900A29EAB00EBAE3E000000000000000000E1E0
+      DF0000000000EDEDEC00D8D6D500AF611C00F0C77100F4CE7D00E7BB6900B892
+      690000000000977B6700E59E2500000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000BE772F00000000000000
+      000000000000DC9F420000000000000000000000000000000000000000000000
+      0000000000000000000000000000D4933A000000000000000000D8D9DA000000
+      00000000000000000000A3805200000000000000000000000000000000000000
+      000000000000CECBD3009A898E00000000005F555B0000000000EAB65D00FFDA
+      820000000000D0CDCE00D69A470000000000C8C5CD00000000007D6F73004D41
+      4800D9D8D700F0BF5C0000000000000000000000000000000000C9853900FBD5
+      80000000000000000000E8B55500D7D7D80083694A009F7E540000000000A09E
+      A500DCDADA000000000000000000C3C0CB000000000097878B0000000000B668
+      1C00000000000000000000000000E4AF5400BAB8BC00C073270000000000C87D
+      2E00000000000000000000000000000000000000000000000000DFA144000000
+      0000EEBA500000000000EFBC5600C67B2C00F5D58400EFC36700000000000000
+      0000D8D5D600D8D7D6000000000000000000D8D8D900D99D4900DBDAD800E6B3
+      5900D8973C0000000000D7D4D4000000000000000000BCB9C400000000000000
+      00000000000000000000CBC8D00000000000CCCAD400E2E1DF0096949C000000
+      0000DCB87100D0904000D2944200000000000000000000000000BE7026000000
+      0000F0C1630000000000000000000000000000000000977B650000000000B06B
+      2A00FEFFFF00F8F7F700E7E8E60000000000FFFFFF00561156FAFAFAFAFAFAFA
+      FAFAFA561111183415D924223052E83C1F1F521502BA7802154595310A383342
+      A24C97155D3E123D15B3A3D4D3DD060C0C9C06154AF1124A1540B831A1389742
+      A24C971549C0A94F15FCFCFCFCFCFCFCFCFCFC1546CE13461540B831A1389742
+      A24C97154DC2ECCB15FBFBFBFBFBFBFBFBFBFB15CD2FEDA45A5CF8F8F8F8F8F8
+      F8F85C5AF32F9DD01B4ED71515151548AE894E1B1B86D81B570847555555552E
+      BF0C085757DB2A16174B1F525252528D9A2B0917177C2A1758E0FD10101010B0
+      AAE9B65858C9BE1DCF9F4454545454AFEB29E7CF2C04DA2D20E5390D0D0D0D29
+      B215942CAD000314145959191919191919590499000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000100000003000028000000100000002000
+      000001002000000000004004000000000000000000000000000000000000C176
+      1BFFC27519FFBD6B13FFB96504FFB96504FFB96504FFBA6504FFBA6504FFBA65
+      04FFBA6504FFBA6504FFBA6504FFBA6504FFBC690AFFB96A15FFC3791FFFD593
+      3DFFEFB736FFCDC6C0FFE9F8FFFFDBE5F6FFDBE8F8FFDBE8F8FFDBE8F9FFDBE8
+      F8FFDAE7F8FFDBE7F8FFD8E4F5FFE9F6FFFFCDC6C0FFEAA714FFC0761DFFCD95
+      51FFE8AE3CFFDCD7D4FFECE8E9FFADA0A2FFA79B9EFF9E9395FF94898CFF8A81
+      85FF83797CFF7B7276FF685F64FFECE8E9FFDCD7D4FFE59E20FFC77B25FFD096
+      53FFEAB447FFDCD7D4FFEFF0EFFFDFDEDCFFE1E0DFFFE0DFDEFFDFE0DDFFE0DF
+      DDFFDFDEDDFFDFE0DEFFDBD9D9FFEDEDEDFFDCD7D4FFE7A62BFFC9802BFFD49B
+      58FFEBB950FFDCD7D4FFECE8E9FFA99D9FFFA4999EFF9A9194FF92888BFF897F
+      85FF82797CFF7A7177FF655C62FFECE8E9FFDCD7D4FFE8AC37FFCC8531FFD69E
+      5BFFEDBD5AFFDCD7D4FFFFFFFFFFFFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCD7D4FFEAB340FFD08B34FFD9A4
+      5EFFF0C263FFDCD7D4FFECE8E9FFA99D9FFFA4999EFF9A9194FF92888BFF897F
+      85FF82797CFF7A7177FF655C62FFECE8E9FFDCD7D4FFEDB749FFD2903AFFD8A3
+      5CFFF0C66DFFDCD7D4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCD7D4FFEEBD54FFD7963EFFDEAC
+      69FFF9D281FFC1975CFF9A7B60FF95775EFF97795DFF97795DFF97795DFF9779
+      5DFF97795CFF97795CFF95775EFF9A7A5EFFC19A64FFF7CA6BFFD99B44FFDDAB
+      67FFF6D58BFFFFD056FFC0A887FFC8C5C9FFCEC6BFFFCDC6C0FFCDC6C0FFCDC6
+      BFFFD6D0CAFFD6D3D0FFCFCED4FFC0A888FFFFD25DFFF3CC75FFDCA148FFDCA9
+      66FFF6D993FFFBC85DFFC2B4A2FFD7DEEBFFDDDDDDFFDCDDDEFFDCDBDDFFE7E8
+      EAFFC8BAA7FFA29692FFC2B4A2FFC6BCA9FFFBCB63FFF3D07EFFE0A74CFFE5B9
+      73FFF6DA97FFFBCC62FFC8BAA7FFDDE0E9FFE1DFDDFFE0DFDEFFDFDDDCFFEFF3
+      F9FF9F886FFFE5AF47FF9E9189FFC7BDB2FFFDCF6AFFF5D484FFE3AC51FFE9BC
+      75FFF8DD9EFFFDCF69FFCEC0AFFFE3E7EFFFE7E5E3FFE6E5E4FFE5E4E2FFF1F6
+      FFFFBAA386FFFFE873FFB5AB9EFFCAC0B8FFFFD26EFFF9DA8EFFE7B25BFFEAC0
+      79FFF8E09BFFFBD165FFD3C4AFFFEAEEF6FFECEBE8FFECEBE9FFEBE9E6FFFBFF
+      FFFFA28E78FFDEAF4FFFA89C95FFD1C7B9FFFFDA78FFF5D889FFE2A442FFECC4
+      7EFFFEF4D5FFFFE290FFDCD7D4FFF5FFFFFFF6FEFFFFF6FEFFFFF6FDFFFFFFFF
+      FFFFDFDDDCFFC8BAA7FFDFDDDCFFE5E4E2FFFFDE88FFE4AA45FFDD973419ECC6
+      81FFF0CA82FFF4CA7DFFE8C788FFEFCF94FFEED192F1EDCF92FFEED092FFEED0
+      93FFF2D396FFF7D79BFFF6D69BFFE6C48AFFEBB552FFE19E3511000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000010000}
+  end
+end

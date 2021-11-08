@@ -1,0 +1,32 @@
+unit UNOBPERSONEL;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm;
+
+type
+  TFRMNOB_PERSONEL = class(TUniForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FRMNOB_PERSONEL: TFRMNOB_PERSONEL;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication;
+
+function FRMNOB_PERSONEL: TFRMNOB_PERSONEL;
+begin
+  Result := TFRMNOB_PERSONEL(UniMainModule.GetFormInstance(TFRMNOB_PERSONEL));
+end;
+
+end.

@@ -1,0 +1,56 @@
+object UniForm1: TUniForm1
+  Left = 0
+  Top = 0
+  ClientHeight = 541
+  ClientWidth = 930
+  Caption = 'UniForm1'
+  OldCreateOrder = False
+  MonitoredKeys.Keys = <>
+  OnBeforeShow = UniFormBeforeShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniButton1: TUniButton
+    Left = 0
+    Top = 516
+    Width = 930
+    Height = 25
+    Hint = ''
+    Caption = #199#305'k'#305#351
+    Align = alBottom
+    TabOrder = 0
+  end
+  object UniURLFrame1: TUniURLFrame
+    Left = 0
+    Top = 0
+    Width = 930
+    Height = 516
+    Hint = ''
+    Align = alClient
+    TabOrder = 1
+    ParentColor = False
+    Color = clBtnFace
+  end
+  object frxPDFExport1: TfrxPDFExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    EmbeddedFonts = True
+    PrintOptimized = False
+    Outline = False
+    Background = False
+    HTMLTags = True
+    Quality = 95
+    Author = 'FastReport'
+    Subject = 'FastReport PDF export'
+    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
+    HideToolbar = False
+    HideMenubar = False
+    HideWindowUI = False
+    FitWindow = False
+    CenterWindow = False
+    PrintScaling = False
+    Left = 664
+    Top = 184
+  end
+end

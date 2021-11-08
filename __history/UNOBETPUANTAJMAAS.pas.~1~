@@ -1,0 +1,42 @@
+unit UNOBETPUANTAJMAAS;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, uniGUITypes, uniGUIAbstractClasses,
+  uniGUIClasses, uniGUIForm;
+
+type
+  TFRMPUANTAJMAAS = class(TUniForm)
+    QPUANTAJMAAS: TOraQuery;
+    DSPUANTAJMAAS: TOraDataSource;
+    QTASTIK: TOraQuery;
+    qSORGU: TOraQuery;
+    DataSource1: TDataSource;
+    QGUN: TOraQuery;
+    frxReport1: TfrxReport;
+    puantaj: TfrxDBDataset;
+    Panel1: TUniPanel;
+    UniDBGrid1: TUniDBGrid;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+function FRMPUANTAJMAAS: TFRMPUANTAJMAAS;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  MainModule, uniGUIApplication, DATALAR, UNOBEPUANTAJ, Main;
+
+function FRMPUANTAJMAAS: TFRMPUANTAJMAAS;
+begin
+  Result := TFRMPUANTAJMAAS(UniMainModule.GetFormInstance(TFRMPUANTAJMAAS));
+end;
+
+end.

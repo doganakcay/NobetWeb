@@ -1,0 +1,360 @@
+object FRMTUMNOBET: TFRMTUMNOBET
+  Left = 0
+  Top = 0
+  ClientHeight = 357
+  ClientWidth = 966
+  Caption = 'T'#252'm N'#246'betler'
+  OldCreateOrder = False
+  OnActivate = UniFormActivate
+  MonitoredKeys.Keys = <>
+  OnCreate = UniFormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UniPanel1: TUniPanel
+    Left = 0
+    Top = 317
+    Width = 966
+    Height = 40
+    Hint = ''
+    Align = alBottom
+    TabOrder = 0
+    Caption = ''
+    ExplicitTop = 224
+    object RzBitBtn1: TUniButton
+      Left = 862
+      Top = 8
+      Width = 75
+      Height = 25
+      Hint = ''
+      Caption = 'Kaydet'
+      TabOrder = 1
+      OnClick = RzBitBtn1Click
+    end
+  end
+  object UniDBGrid1: TUniDBGrid
+    Left = 0
+    Top = 0
+    Width = 966
+    Height = 317
+    Hint = ''
+    DataSource = DataSource1
+    LoadMask.Message = 'Loading data...'
+    Align = alClient
+    TabOrder = 1
+    OnDrawColumnCell = UniDBGrid1DrawColumnCell
+  end
+  object UniDBGrid2: TUniDBGrid
+    Left = 200
+    Top = 120
+    Width = 320
+    Height = 160
+    Hint = ''
+    DataSource = DataSource1
+    LoadMask.Message = 'Loading data...'
+    TabOrder = 2
+  end
+  object OraQuery1: TOraQuery
+    SQLInsert.Strings = (
+      'INSERT INTO DOGUMKAYIT.NOBET_PUANTAJ_CETVELI'
+      
+        '  (TARIH, BIRIM, TC, G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G1' +
+        '1, G12, G13, G14, G15, G16, G17, G18, G19, G20, G21, G22, G23, G' +
+        '24, G25, G26, G27, G28, G29, G30, G31, TOP, NOBSAAT, EKSIK, ALAC' +
+        'AK, UCRET, NOBKONT, MAAS, IZIN_GOREV)'
+      'VALUES'
+      
+        '  (:TARIH, :BIRIM, :TC, :G1, :G2, :G3, :G4, :G5, :G6, :G7, :G8, ' +
+        ':G9, :G10, :G11, :G12, :G13, :G14, :G15, :G16, :G17, :G18, :G19,' +
+        ' :G20, :G21, :G22, :G23, :G24, :G25, :G26, :G27, :G28, :G29, :G3' +
+        '0, :G31, :TOP, :NOBSAAT, :EKSIK, :ALACAK, :UCRET, :NOBKONT, :MAA' +
+        'S, :IZIN_GOREV)')
+    SQLDelete.Strings = (
+      'DELETE FROM DOGUMKAYIT.NOBET_PUANTAJ_CETVELI'
+      'WHERE'
+      '  ROWID = :Old_ROWID')
+    SQLUpdate.Strings = (
+      'UPDATE DOGUMKAYIT.NOBET_PUANTAJ_CETVELI'
+      'SET'
+      
+        '  TARIH = :TARIH, BIRIM = :BIRIM, TC = :TC, G1 = :G1, G2 = :G2, ' +
+        'G3 = :G3, G4 = :G4, G5 = :G5, G6 = :G6, G7 = :G7, G8 = :G8, G9 =' +
+        ' :G9, G10 = :G10, G11 = :G11, G12 = :G12, G13 = :G13, G14 = :G14' +
+        ', G15 = :G15, G16 = :G16, G17 = :G17, G18 = :G18, G19 = :G19, G2' +
+        '0 = :G20, G21 = :G21, G22 = :G22, G23 = :G23, G24 = :G24, G25 = ' +
+        ':G25, G26 = :G26, G27 = :G27, G28 = :G28, G29 = :G29, G30 = :G30' +
+        ', G31 = :G31, TOP = :TOP, NOBSAAT = :NOBSAAT, EKSIK = :EKSIK, AL' +
+        'ACAK = :ALACAK, UCRET = :UCRET, NOBKONT = :NOBKONT, MAAS = :MAAS' +
+        ', IZIN_GOREV = :IZIN_GOREV'
+      'WHERE'
+      '  ROWID = :Old_ROWID')
+    SQLLock.Strings = (
+      'SELECT * FROM DOGUMKAYIT.NOBET_PUANTAJ_CETVELI'
+      'WHERE'
+      '  ROWID = :Old_ROWID'
+      'FOR UPDATE NOWAIT')
+    SQLRefresh.Strings = (
+      
+        'SELECT DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.TARIH, DOGUMKAYIT.NOBET_' +
+        'PUANTAJ_CETVELI.BIRIM, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.TC, DOGU' +
+        'MKAYIT.NOBET_PUANTAJ_CETVELI.G1, DOGUMKAYIT.NOBET_PUANTAJ_CETVEL' +
+        'I.G2, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.G3, DOGUMKAYIT.NOBET_PUAN' +
+        'TAJ_CETVELI.G4, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.G5, DOGUMKAYIT.' +
+        'NOBET_PUANTAJ_CETVELI.G6, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.G7, D' +
+        'OGUMKAYIT.NOBET_PUANTAJ_CETVELI.G8, DOGUMKAYIT.NOBET_PUANTAJ_CET' +
+        'VELI.G9, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.G10, DOGUMKAYIT.NOBET_' +
+        'PUANTAJ_CETVELI.G11, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.G12, DOGUM' +
+        'KAYIT.NOBET_PUANTAJ_CETVELI.G13, DOGUMKAYIT.NOBET_PUANTAJ_CETVEL' +
+        'I.G14, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.G15, DOGUMKAYIT.NOBET_PU' +
+        'ANTAJ_CETVELI.G16, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.G17, DOGUMKA' +
+        'YIT.NOBET_PUANTAJ_CETVELI.G18, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.' +
+        'G19, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.G20, DOGUMKAYIT.NOBET_PUAN' +
+        'TAJ_CETVELI.G21, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.G22, DOGUMKAYI' +
+        'T.NOBET_PUANTAJ_CETVELI.G23, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.G2' +
+        '4, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.G25, DOGUMKAYIT.NOBET_PUANTA' +
+        'J_CETVELI.G26, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.G27, DOGUMKAYIT.' +
+        'NOBET_PUANTAJ_CETVELI.G28, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.G29,' +
+        ' DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.G30, DOGUMKAYIT.NOBET_PUANTAJ_' +
+        'CETVELI.G31, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.TOP, DOGUMKAYIT.NO' +
+        'BET_PUANTAJ_CETVELI.NOBSAAT, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.EK' +
+        'SIK, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.ALACAK, DOGUMKAYIT.NOBET_P' +
+        'UANTAJ_CETVELI.UCRET, DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.NOBKONT, ' +
+        'DOGUMKAYIT.NOBET_PUANTAJ_CETVELI.MAAS, DOGUMKAYIT.NOBET_PUANTAJ_' +
+        'CETVELI.IZIN_GOREV FROM DOGUMKAYIT.NOBET_PUANTAJ_CETVELI'
+      'WHERE'
+      '  ROWID = :Old_ROWID')
+    Session = data.AKGUN
+    SQL.Strings = (
+      
+        'select B.ACIKLAMA,T.*,T.ROWID from nobet_per_puantaj_cetveli t,N' +
+        'obet_Birimleri B WHERE'
+      'B.BIRIM=T.BIRIM --AND t.tarih=:tar and t.tc=:tc'
+      '--t.tarih='#39'6.2013'#39' and t.tc='#39'31223034862'#39)
+    Active = True
+    AfterPost = OraQuery1AfterPost
+    Left = 32
+    Top = 16
+    object OraQuery1ACIKLAMA: TStringField
+      FieldName = 'ACIKLAMA'
+      Size = 40
+    end
+    object OraQuery1TARIH: TStringField
+      FieldName = 'TARIH'
+      Required = True
+      Size = 7
+    end
+    object OraQuery1BIRIM: TStringField
+      FieldName = 'BIRIM'
+      Required = True
+      Size = 6
+    end
+    object OraQuery1TC: TFloatField
+      FieldName = 'TC'
+      Required = True
+    end
+    object OraQuery1G1: TStringField
+      FieldName = 'G1'
+      Size = 12
+    end
+    object OraQuery1G2: TStringField
+      FieldName = 'G2'
+      Size = 12
+    end
+    object OraQuery1G3: TStringField
+      FieldName = 'G3'
+      Size = 12
+    end
+    object OraQuery1G4: TStringField
+      FieldName = 'G4'
+      Size = 12
+    end
+    object OraQuery1G5: TStringField
+      FieldName = 'G5'
+      Size = 12
+    end
+    object OraQuery1G6: TStringField
+      FieldName = 'G6'
+      Size = 12
+    end
+    object OraQuery1G7: TStringField
+      FieldName = 'G7'
+      Size = 12
+    end
+    object OraQuery1G8: TStringField
+      FieldName = 'G8'
+      Size = 12
+    end
+    object OraQuery1G9: TStringField
+      FieldName = 'G9'
+      Size = 12
+    end
+    object OraQuery1G10: TStringField
+      FieldName = 'G10'
+      Size = 12
+    end
+    object OraQuery1G11: TStringField
+      FieldName = 'G11'
+      Size = 12
+    end
+    object OraQuery1G12: TStringField
+      FieldName = 'G12'
+      Size = 12
+    end
+    object OraQuery1G13: TStringField
+      FieldName = 'G13'
+      Size = 12
+    end
+    object OraQuery1G14: TStringField
+      FieldName = 'G14'
+      Size = 12
+    end
+    object OraQuery1G15: TStringField
+      FieldName = 'G15'
+      Size = 12
+    end
+    object OraQuery1G16: TStringField
+      FieldName = 'G16'
+      Size = 12
+    end
+    object OraQuery1G17: TStringField
+      FieldName = 'G17'
+      Size = 12
+    end
+    object OraQuery1G18: TStringField
+      FieldName = 'G18'
+      Size = 12
+    end
+    object OraQuery1G19: TStringField
+      FieldName = 'G19'
+      Size = 12
+    end
+    object OraQuery1G20: TStringField
+      FieldName = 'G20'
+      Size = 12
+    end
+    object OraQuery1G21: TStringField
+      FieldName = 'G21'
+      Size = 12
+    end
+    object OraQuery1G22: TStringField
+      FieldName = 'G22'
+      Size = 12
+    end
+    object OraQuery1G23: TStringField
+      FieldName = 'G23'
+      Size = 12
+    end
+    object OraQuery1G24: TStringField
+      FieldName = 'G24'
+      Size = 12
+    end
+    object OraQuery1G25: TStringField
+      FieldName = 'G25'
+      Size = 12
+    end
+    object OraQuery1G26: TStringField
+      FieldName = 'G26'
+      Size = 12
+    end
+    object OraQuery1G27: TStringField
+      FieldName = 'G27'
+      Size = 12
+    end
+    object OraQuery1G28: TStringField
+      FieldName = 'G28'
+      Size = 12
+    end
+    object OraQuery1G29: TStringField
+      FieldName = 'G29'
+      Size = 12
+    end
+    object OraQuery1G30: TStringField
+      FieldName = 'G30'
+      Size = 12
+    end
+    object OraQuery1G31: TStringField
+      FieldName = 'G31'
+      Size = 12
+    end
+    object OraQuery1TOP: TFloatField
+      FieldName = 'TOP'
+    end
+    object OraQuery1NOBSAAT: TFloatField
+      FieldName = 'NOBSAAT'
+    end
+    object OraQuery1EKSIK: TFloatField
+      FieldName = 'EKSIK'
+    end
+    object OraQuery1UCRET: TFloatField
+      FieldName = 'UCRET'
+    end
+    object OraQuery1IZIN_GOREV: TFloatField
+      FieldName = 'IZIN_GOREV'
+    end
+    object OraQuery1ROWID: TStringField
+      FieldName = 'ROWID'
+      Size = 18
+    end
+  end
+  object QSORUMLU: TOraQuery
+    Session = data.AKGUN
+    SQL.Strings = (
+      'SELECT T.BIRIM,T.NOBET_SORUMLUSU SORUMLU FROM NOBET_BIRIMLERI T')
+    MasterSource = OraDataSource1
+    MasterFields = 'BIRIM'
+    DetailFields = 'BIRIM'
+    Active = True
+    Left = 24
+    Top = 144
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'BIRIM'
+        ParamType = ptInput
+        Value = '811'
+      end>
+  end
+  object OraDataSource1: TOraDataSource
+    DataSet = OraQuery1
+    OnStateChange = OraDataSource1StateChange
+    OnDataChange = OraDataSource1DataChange
+    Left = 96
+    Top = 24
+  end
+  object DataSource1: TDataSource
+    DataSet = QGUN
+    Left = 408
+    Top = 40
+  end
+  object QGUN: TOraQuery
+    SQL.Strings = (
+      'SELECT TO_CHAR(T.GUN, '#39'DAY'#39') GUN'
+      '  FROM TABLE(tarih_getir(to_number(:yil) )) T'
+      ' WHERE TO_NUMBER((TO_CHAR(T.GUN, '#39'MM'#39'))) =to_number(:ay)')
+    Left = 448
+    Top = 19
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'yil'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'ay'
+        Value = nil
+      end>
+  end
+  object QNOB_PER_SAAT: TOraQuery
+    Session = data.AKGUN
+    SQL.Strings = (
+      'select t.* from nobet_per_saati t order by T.SIRA_NO')
+    Active = True
+    Left = 520
+    Top = 29
+  end
+  object DSNOB_PER_SAAT: TDataSource
+    DataSet = QNOB_PER_SAAT
+    Left = 576
+    Top = 13
+  end
+end
